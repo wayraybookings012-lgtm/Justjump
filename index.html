@@ -1,0 +1,2727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izandla Zagezana — Together We Fight Unemployment</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --terracotta: #C75B39;
+            --terracotta-light: #E07A5F;
+            --gold: #D4A843;
+            --gold-light: #F2CC8F;
+            --deep-green: #2D6A4F;
+            --forest: #1B4332;
+            --warm-cream: #FDF6E3;
+            --sand: #F5E6D3;
+            --charcoal: #1A1A2E;
+            --slate: #4A4E69;
+            --light-slate: #9A8C98;
+            --white: #FFFFFF;
+            --shadow: rgba(26, 26, 46, 0.08);
+            --shadow-lg: rgba(26, 26, 46, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: relative;
+            z-index: 100;
+            width: 100%;
+            background: rgba(27, 67, 50, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 17px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links > a,
+        .dropdown-btn {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links > a:hover,
+        .dropdown-btn:hover {
+            color: var(--gold-light);
+        }
+
+        /* Dropdown */
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 0;
+        }
+
+        .dropdown-arrow {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 260px;
+            background: var(--white);
+            border-radius: 14px;
+            padding: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+
+            transition: all 0.25s ease;
+        }
+
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 13px 15px;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 9px;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(199, 91, 57, 0.08);
+            color: var(--terracotta);
+            transform: translateX(3px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: linear-gradient(
+                135deg,
+                var(--forest) 0%,
+                var(--deep-green) 50%,
+                var(--terracotta) 100%
+            );
+
+            color: var(--white);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
+        }
+
+        .hero-slogan {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+            max-width: 1200px;
+            margin: -40px auto 0;
+            padding: 0 24px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Category Filters */
+
+        .filters-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 40px var(--shadow-lg);
+            margin-bottom: 32px;
+        }
+
+        .filters-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--light-slate);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 11px 20px;
+            border: 2px solid #E8E8EC;
+            background: var(--white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+            background: rgba(199, 91, 57, 0.05);
+        }
+
+        /* =========================
+           MESSAGES GRID
+        ========================= */
+
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(360px, 1fr)
+            );
+            gap: 24px;
+        }
+
+        .message-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.4s cubic-bezier(
+                0.175,
+                0.885,
+                0.32,
+                1.275
+            );
+
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .message-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow-lg);
+        }
+
+        .card-header {
+            padding: 20px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .card-badge {
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--white);
+        }
+
+        .badge-job {
+            background: var(--terracotta);
+        }
+
+        .badge-internship {
+            background: var(--deep-green);
+        }
+
+        .badge-bursary {
+            background: var(--gold);
+            color: var(--charcoal) !important;
+        }
+
+        .badge-learnership {
+            background: #6B5B95;
+        }
+
+        .badge-other {
+            background: var(--slate);
+        }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--light-slate);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .card-body {
+            padding: 16px 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-text {
+            color: var(--slate);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+            white-space: pre-line;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #F0F0F0;
+            gap: 10px;
+        }
+
+        .card-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .author-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid #E8E8EC;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--slate);
+            font-size: 1rem;
+        }
+
+        .action-btn:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 24px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-state .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            color: var(--light-slate);
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+
+        /* =========================
+           ADMIN BUTTON
+        ========================= */
+
+        .admin-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            box-shadow: 0 8px 24px rgba(199, 91, 57, 0.4);
+
+            transition: all 0.3s ease;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .admin-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* =========================
+           ADMIN PANEL
+        ========================= */
+
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
+
+            background: var(--white);
+
+            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+
+            z-index: 1000;
+
+            overflow-y: auto;
+            padding: 32px;
+        }
+
+        .admin-panel.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .admin-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .close-admin {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #E8E8EC;
+            background: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-admin:hover {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--slate);
+        }
+
+        .form-group input {
+            padding: 14px 16px;
+            border: 2px solid #E8E8EC;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: #FAFAFA;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(199, 91, 57, 0.1);
+        }
+
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--light-slate);
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 14px 28px;
+
+            border: none;
+            border-radius: 12px;
+
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+
+            color: var(--white);
+
+            box-shadow: 0 8px 24px rgba(199, 91, 57, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(199, 91, 57, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--charcoal);
+            border: 2px solid #E8E8EC;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .security-notice {
+            margin-top: 20px;
+            padding: 14px 16px;
+            background: #FFF8E1;
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--slate);
+            line-height: 1.5;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading-overlay {
+            display: none;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(8px);
+
+            z-index: 1001;
+
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: var(--gold);
+
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+
+            transform: translateX(-50%) translateY(100px);
+
+            background: var(--charcoal);
+            color: var(--white);
+
+            padding: 16px 28px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+
+            opacity: 0;
+
+            transition: all 0.4s ease;
+
+            z-index: 1002;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-weight: 500;
+
+            max-width: 90%;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            background: var(--deep-green);
+        }
+
+        .toast.error {
+            background: #C0392B;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* =========================
+           OVERLAY
+        ========================= */
+
+        .panel-overlay {
+            display: none;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            background: rgba(0,0,0,0.4);
+
+            z-index: 999;
+        }
+
+        .panel-overlay.active {
+            display: block;
+        }
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           SCROLLBAR
+        ========================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--warm-cream);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--light-slate);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--slate);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+                padding: 16px 20px;
+            }
+
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .nav-links > a,
+            .dropdown-btn {
+                font-size: 0.8rem;
+            }
+
+            .dropdown-menu {
+                right: -10px;
+                min-width: 230px;
+            }
+
+            .hero-content {
+                padding: 60px 20px 80px;
+            }
+
+            .main-content {
+                margin-top: -30px;
+                padding: 0 16px 60px;
+            }
+
+            .messages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-panel {
+                max-width: 100%;
+            }
+
+            .hero-stats {
+                gap: 25px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dropdown-menu {
+                left: 0;
+                right: auto;
+            }
+
+            .card-header {
+                flex-direction: column;
+            }
+
+            .card-footer {
+                align-items: flex-start;
+            }
+
+            .toast {
+                font-size: 0.85rem;
+                padding: 14px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <header class="hero">
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+
+                <a href="index.html" class="nav-logo">
+                    Izandla Zagezana
+                </a>
+
+                <div class="nav-links">
+
+                    <!-- About -->
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <!-- Services Dropdown -->
+                    <div class="dropdown">
+
+                        <button
+                            class="dropdown-btn"
+                            type="button"
+                            aria-label="Open Services menu"
+                        >
+                            Services
+                            <span class="dropdown-arrow">⌄</span>
+                        </button>
+
+                        <div class="dropdown-menu">
+
+                            <a href="business.html">
+                                How to Start My Business
+                            </a>
+
+                            <a href="cv.html">
+                                Create CV
+                            </a>
+
+                            <a href="documents.html">
+                                Scan My Documents
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Community-Powered Opportunities
+            </div>
+
+            <h1>
+                Izandla <span>Zagezana</span>
+            </h1>
+
+            <p class="hero-slogan">
+                Together we fight unemployment.
+                Connecting our community with real opportunities,
+                one message at a time.
+            </p>
+
+            <div class="hero-stats">
+
+                <div class="stat">
+                    <div
+                        class="stat-number"
+                        id="stat-opportunities"
+                    >
+                        0
+                    </div>
+
+                    <div class="stat-label">
+                        Opportunities
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div
+                        class="stat-number"
+                        id="stat-days"
+                    >
+                        30
+                    </div>
+
+                    <div class="stat-label">
+                        Days Tracked
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">
+                        ∞
+                    </div>
+
+                    <div class="stat-label">
+                        Community Power
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+        <!-- Category Filters -->
+        <div class="filters-container">
+
+            <div class="filters-title">
+                Browse Opportunities
+            </div>
+
+            <div class="filters">
+
+                <button
+                    class="filter-btn active"
+                    onclick="filterMessages('all')"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterMessages('job')"
+                >
+                    Jobs
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterMessages('internship')"
+                >
+                    Internships
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterMessages('bursary')"
+                >
+                    Bursaries
+                </button>
+
+                <button
+                    class="filter-btn"
+                    onclick="filterMessages('learnership')"
+                >
+                    Learnerships
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Messages -->
+        <div
+            class="messages-grid"
+            id="messagesGrid"
+        >
+
+            <div class="empty-state">
+
+                <div class="icon">
+                    📬
+                </div>
+
+                <h3>
+                    No Opportunities Yet
+                </h3>
+
+                <p>
+                    Click the settings button at the bottom right
+                    to connect your Telegram channel and fetch
+                    the latest opportunities.
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <h3>
+            Izandla Zagezana
+        </h3>
+
+        <p>
+            When hands wash each other, both become clean.
+            Together, we build a future where no one is left behind.
+        </p>
+
+        <div class="footer-links">
+
+            <a href="about.html">
+                About Us
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         ADMIN TOGGLE
+    ========================================== -->
+
+    <button
+        class="admin-toggle"
+        onclick="toggleAdmin()"
+        title="Settings"
+        aria-label="Open settings"
+    >
+        ⚙️
+    </button>
+
+
+    <!-- Overlay -->
+    <div
+        class="panel-overlay"
+        id="panelOverlay"
+        onclick="toggleAdmin()"
+    ></div>
+
+
+    <!-- =========================================
+         ADMIN PANEL
+    ========================================== -->
+
+    <div
+        class="admin-panel"
+        id="adminPanel"
+    >
+
+        <div class="admin-header">
+
+            <h2>
+                Settings
+            </h2>
+
+            <button
+                class="close-admin"
+                onclick="toggleAdmin()"
+                aria-label="Close settings"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <p
+            style="
+                color: var(--light-slate);
+                margin-bottom: 24px;
+                font-size: 0.9rem;
+            "
+        >
+            Connect to your Telegram channel where opportunities
+            are posted. Telegram acts as your database —
+            no backend needed.
+        </p>
+
+
+        <!-- Bot Token -->
+        <div class="form-group">
+
+            <label for="botToken">
+                Bot Token
+            </label>
+
+            <input
+                type="password"
+                id="botToken"
+                placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz"
+            >
+
+            <span class="hint">
+                From @BotFather on Telegram
+            </span>
+
+        </div>
+
+
+        <!-- Chat ID -->
+        <div class="form-group">
+
+            <label for="chatId">
+                Chat ID
+            </label>
+
+            <input
+                type="text"
+                id="chatId"
+                placeholder="-1001234567890"
+            >
+
+            <span class="hint">
+                Channel or Group ID
+                (with -100 for channels)
+            </span>
+
+        </div>
+
+
+        <!-- Days -->
+        <div class="form-group">
+
+            <label for="daysBack">
+                Days to Fetch
+            </label>
+
+            <input
+                type="number"
+                id="daysBack"
+                value="30"
+                min="1"
+                max="365"
+            >
+
+            <span class="hint">
+                How many days back to search
+            </span>
+
+        </div>
+
+
+        <!-- Fetch -->
+        <button
+            class="btn btn-primary"
+            id="fetchBtn"
+            onclick="fetchMessages()"
+        >
+            <span>🚀</span>
+            Fetch Opportunities
+        </button>
+
+
+        <!-- Demo -->
+        <button
+            class="btn btn-secondary"
+            onclick="loadDemoData()"
+        >
+            <span>👁️</span>
+            Load Demo Data
+        </button>
+
+
+        <!-- Security -->
+        <div class="security-notice">
+
+            <strong>
+                🔒 Security Note:
+            </strong>
+
+            Your bot token is stored only in your browser's
+            local storage. Never share it publicly.
+            For production, use a backend proxy.
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         LOADING
+    ========================================== -->
+
+    <div
+        class="loading-overlay"
+        id="loadingOverlay"
+    >
+
+        <div class="spinner"></div>
+
+        <div class="loading-text">
+            Fetching opportunities from Telegram...
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TOAST
+    ========================================== -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <span id="toastIcon">
+            ✅
+        </span>
+
+        <span id="toastMessage">
+            Operation successful
+        </span>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /* =========================
+           STATE
+        ========================= */
+
+        let allMessages = [];
+        let currentFilter = 'all';
+
+
+        /* =========================
+           LOAD SAVED CONFIG
+        ========================= */
+
+        window.addEventListener(
+            'DOMContentLoaded',
+            () => {
+
+                const savedToken =
+                    localStorage.getItem(
+                        'izandla_botToken'
+                    );
+
+                const savedChatId =
+                    localStorage.getItem(
+                        'izandla_chatId'
+                    );
+
+                const savedDays =
+                    localStorage.getItem(
+                        'izandla_daysBack'
+                    );
+
+
+                if (savedToken) {
+                    document.getElementById(
+                        'botToken'
+                    ).value = savedToken;
+                }
+
+
+                if (savedChatId) {
+                    document.getElementById(
+                        'chatId'
+                    ).value = savedChatId;
+                }
+
+
+                if (savedDays) {
+                    document.getElementById(
+                        'daysBack'
+                    ).value = savedDays;
+                }
+
+            }
+        );
+
+
+        /* =========================
+           ADMIN PANEL
+        ========================= */
+
+        function toggleAdmin() {
+
+            document
+                .getElementById('adminPanel')
+                .classList
+                .toggle('active');
+
+            document
+                .getElementById('panelOverlay')
+                .classList
+                .toggle('active');
+
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        function showToast(
+            message,
+            type = 'success'
+        ) {
+
+            const toast =
+                document.getElementById('toast');
+
+            const icon =
+                document.getElementById('toastIcon');
+
+            const msg =
+                document.getElementById('toastMessage');
+
+
+            msg.textContent = message;
+
+
+            icon.textContent =
+                type === 'success'
+                    ? '✅'
+                    : type === 'error'
+                        ? '❌'
+                        : 'ℹ️';
+
+
+            toast.className =
+                `toast show ${type}`;
+
+
+            setTimeout(
+                () => {
+                    toast.classList.remove('show');
+                },
+                4000
+            );
+
+        }
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        function setLoading(show) {
+
+            document
+                .getElementById('loadingOverlay')
+                .classList
+                .toggle('active', show);
+
+
+            document
+                .getElementById('fetchBtn')
+                .disabled = show;
+
+        }
+
+
+        /* =========================
+           SAVE CONFIG
+        ========================= */
+
+        function saveConfig() {
+
+            const token =
+                document
+                    .getElementById('botToken')
+                    .value
+                    .trim();
+
+
+            const chatId =
+                document
+                    .getElementById('chatId')
+                    .value
+                    .trim();
+
+
+            const days =
+                document
+                    .getElementById('daysBack')
+                    .value;
+
+
+            localStorage.setItem(
+                'izandla_botToken',
+                token
+            );
+
+
+            localStorage.setItem(
+                'izandla_chatId',
+                chatId
+            );
+
+
+            localStorage.setItem(
+                'izandla_daysBack',
+                days
+            );
+
+        }
+
+
+        /* =========================
+           FETCH TELEGRAM MESSAGES
+        ========================= */
+
+        async function fetchMessages() {
+
+            const token =
+                document
+                    .getElementById('botToken')
+                    .value
+                    .trim();
+
+
+            const chatId =
+                document
+                    .getElementById('chatId')
+                    .value
+                    .trim();
+
+
+            const daysBack =
+                parseInt(
+                    document
+                        .getElementById('daysBack')
+                        .value
+                ) || 30;
+
+
+            if (!token || !chatId) {
+
+                showToast(
+                    'Please enter Bot Token and Chat ID',
+                    'error'
+                );
+
+                return;
+            }
+
+
+            saveConfig();
+
+            setLoading(true);
+
+
+            document.getElementById(
+                'stat-days'
+            ).textContent = daysBack;
+
+
+            try {
+
+                const cutoffDate =
+                    new Date();
+
+
+                cutoffDate.setDate(
+                    cutoffDate.getDate() - daysBack
+                );
+
+
+                const cutoffTimestamp =
+                    Math.floor(
+                        cutoffDate.getTime() / 1000
+                    );
+
+
+                const url =
+                    `https://api.telegram.org/bot${token}/getUpdates?limit=100`;
+
+
+                const response =
+                    await fetch(url);
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.ok) {
+                    throw new Error(
+                        data.description ||
+                        'Failed to fetch from Telegram'
+                    );
+                }
+
+
+                const messages = [];
+
+
+                data.result.forEach(
+                    update => {
+
+                        const msg =
+                            update.message ||
+                            update.channel_post ||
+                            update.edited_message ||
+                            update.edited_channel_post;
+
+
+                        if (!msg) return;
+
+
+                        const msgChatId =
+                            msg.chat?.id?.toString();
+
+
+                        const targetChatId =
+                            chatId.toString();
+
+
+                        const chatMatch =
+                            msgChatId === targetChatId ||
+                            msgChatId ===
+                                targetChatId.replace(
+                                    '-100',
+                                    ''
+                                ) ||
+                            ('-100' + msgChatId) ===
+                                targetChatId;
+
+
+                        if (!chatMatch) return;
+
+
+                        if (
+                            msg.date <
+                            cutoffTimestamp
+                        ) {
+                            return;
+                        }
+
+
+                        messages.push({
+
+                            id: msg.message_id,
+
+                            text:
+                                msg.text ||
+                                msg.caption ||
+                                'No text content',
+
+                            date:
+                                new Date(
+                                    msg.date * 1000
+                                ),
+
+                            author:
+                                msg.from?.first_name ||
+                                msg.chat?.title ||
+                                'Community',
+
+                            authorUsername:
+                                msg.from?.username ||
+                                '',
+
+                            photo:
+                                msg.photo
+                                    ? msg.photo[
+                                        msg.photo.length - 1
+                                      ].file_id
+                                    : null,
+
+                            entities:
+                                msg.entities ||
+                                msg.caption_entities ||
+                                []
+
+                        });
+
+                    }
+                );
+
+
+                messages.sort(
+                    (a, b) =>
+                        b.date - a.date
+                );
+
+
+                allMessages = messages;
+
+                renderMessages();
+
+
+                document.getElementById(
+                    'stat-opportunities'
+                ).textContent =
+                    messages.length;
+
+
+                showToast(
+                    `Loaded ${messages.length} opportunities from the last ${daysBack} days!`
+                );
+
+
+                toggleAdmin();
+
+
+            } catch (error) {
+
+                console.error(
+                    'Fetch error:',
+                    error
+                );
+
+
+                showToast(
+                    error.message ||
+                    'Failed to fetch. Check token and chat ID.',
+                    'error'
+                );
+
+            } finally {
+
+                setLoading(false);
+
+            }
+
+        }
+
+
+        /* =========================
+           CATEGORIZE
+        ========================= */
+
+        function categorizeMessage(text) {
+
+            const lower =
+                text.toLowerCase();
+
+
+            if (
+                lower.includes('intern') ||
+                lower.includes('internship')
+            ) {
+                return 'internship';
+            }
+
+
+            if (
+                lower.includes('bursary') ||
+                lower.includes('scholarship') ||
+                lower.includes('fund')
+            ) {
+                return 'bursary';
+            }
+
+
+            if (
+                lower.includes('learnership') ||
+                lower.includes('apprentice')
+            ) {
+                return 'learnership';
+            }
+
+
+            if (
+                lower.includes('job') ||
+                lower.includes('vacancy') ||
+                lower.includes('position') ||
+                lower.includes('hire') ||
+                lower.includes('employment')
+            ) {
+                return 'job';
+            }
+
+
+            return 'other';
+
+        }
+
+
+        /* =========================
+           BADGES
+        ========================= */
+
+        function getCategoryBadge(
+            category
+        ) {
+
+            const badges = {
+
+                job: {
+                    text: 'Job',
+                    class: 'badge-job'
+                },
+
+                internship: {
+                    text: 'Internship',
+                    class: 'badge-internship'
+                },
+
+                bursary: {
+                    text: 'Bursary',
+                    class: 'badge-bursary'
+                },
+
+                learnership: {
+                    text: 'Learnership',
+                    class: 'badge-learnership'
+                },
+
+                other: {
+                    text: 'Opportunity',
+                    class: 'badge-other'
+                }
+
+            };
+
+
+            return (
+                badges[category] ||
+                badges.other
+            );
+
+        }
+
+
+        /* =========================
+           DATE
+        ========================= */
+
+        function formatDate(date) {
+
+            const now =
+                new Date();
+
+
+            const diff =
+                now - date;
+
+
+            const days =
+                Math.floor(
+                    diff /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            if (days === 0) {
+                return 'Today';
+            }
+
+
+            if (days === 1) {
+                return 'Yesterday';
+            }
+
+
+            if (days < 7) {
+                return `${days} days ago`;
+            }
+
+
+            if (days < 30) {
+                return `${Math.floor(days / 7)} weeks ago`;
+            }
+
+
+            return date.toLocaleDateString(
+                'en-ZA',
+                {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                }
+            );
+
+        }
+
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        function filterMessages(
+            category
+        ) {
+
+            currentFilter =
+                category;
+
+
+            document
+                .querySelectorAll('.filter-btn')
+                .forEach(btn => {
+
+                    btn.classList.remove(
+                        'active'
+                    );
+
+
+                    const btnText =
+                        btn.textContent
+                            .toLowerCase();
+
+
+                    if (
+                        category === 'all' &&
+                        btnText === 'all'
+                    ) {
+                        btn.classList.add(
+                            'active'
+                        );
+                    }
+
+
+                    if (
+                        category === 'job' &&
+                        btnText.includes('job')
+                    ) {
+                        btn.classList.add(
+                            'active'
+                        );
+                    }
+
+
+                    if (
+                        category === 'internship' &&
+                        btnText.includes('intern')
+                    ) {
+                        btn.classList.add(
+                            'active'
+                        );
+                    }
+
+
+                    if (
+                        category === 'bursary' &&
+                        btnText.includes('bursar')
+                    ) {
+                        btn.classList.add(
+                            'active'
+                        );
+                    }
+
+
+                    if (
+                        category === 'learnership' &&
+                        btnText.includes('learn')
+                    ) {
+                        btn.classList.add(
+                            'active'
+                        );
+                    }
+
+                });
+
+
+            renderMessages();
+
+        }
+
+
+        /* =========================
+           RENDER MESSAGES
+        ========================= */
+
+        function renderMessages() {
+
+            const grid =
+                document.getElementById(
+                    'messagesGrid'
+                );
+
+
+            let filtered =
+                allMessages;
+
+
+            if (
+                currentFilter !== 'all'
+            ) {
+
+                filtered =
+                    filtered.filter(
+                        message =>
+                            categorizeMessage(
+                                message.text
+                            ) === currentFilter
+                    );
+
+            }
+
+
+            if (
+                filtered.length === 0
+            ) {
+
+                grid.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <div class="icon">
+                            🔍
+                        </div>
+
+                        <h3>
+                            No ${
+                                currentFilter !== 'all'
+                                    ? currentFilter + 's'
+                                    : 'opportunities'
+                            } found
+                        </h3>
+
+                        <p>
+                            Fetch data from Telegram
+                            or load demo data to see
+                            opportunities.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            grid.innerHTML =
+                filtered
+                    .map(
+                        (msg, index) => {
+
+                            const category =
+                                categorizeMessage(
+                                    msg.text
+                                );
+
+
+                            const badge =
+                                getCategoryBadge(
+                                    category
+                                );
+
+
+                            const dateStr =
+                                formatDate(
+                                    msg.date
+                                );
+
+
+                            const initials =
+                                msg.author
+                                    .split(' ')
+                                    .map(
+                                        n => n[0]
+                                    )
+                                    .join('')
+                                    .toUpperCase()
+                                    .slice(0, 2);
+
+
+                            const lines =
+                                msg.text
+                                    .split('\n')
+                                    .filter(
+                                        l =>
+                                            l.trim()
+                                    );
+
+
+                            const rawTitle =
+                                lines[0] ||
+                                'New Opportunity';
+
+
+                            const title =
+                                rawTitle
+                                    .replace(
+                                        /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu,
+                                        ''
+                                    )
+                                    .trim() ||
+                                'New Opportunity';
+
+
+                            const body =
+                                msg.text
+                                    .slice(
+                                        rawTitle.length
+                                    )
+                                    .trim() ||
+                                msg.text;
+
+
+                            return `
+
+                                <article
+                                    class="message-card"
+                                    style="
+                                        animation-delay:
+                                        ${index * 0.08}s
+                                    "
+                                >
+
+                                    <div
+                                        class="card-header"
+                                    >
+
+                                        <span
+                                            class="card-badge ${badge.class}"
+                                        >
+                                            ${badge.text}
+                                        </span>
+
+                                        <div
+                                            class="card-date"
+                                        >
+                                            <span>
+                                                📅
+                                            </span>
+
+                                            ${dateStr}
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div
+                                        class="card-body"
+                                    >
+
+                                        <h3
+                                            class="card-title"
+                                        >
+                                            ${escapeHtml(
+                                                title
+                                            )}
+                                        </h3>
+
+
+                                        <p
+                                            class="card-text"
+                                        >
+                                            ${escapeHtml(
+                                                body
+                                            )}
+                                        </p>
+
+
+                                        <div
+                                            class="card-footer"
+                                        >
+
+                                            <div
+                                                class="card-author"
+                                            >
+
+                                                <div
+                                                    class="author-avatar"
+                                                >
+                                                    ${initials}
+                                                </div>
+
+                                                <span
+                                                    class="author-name"
+                                                >
+                                                    ${escapeHtml(
+                                                        msg.author
+                                                    )}
+                                                </span>
+
+                                            </div>
+
+
+                                            <div
+                                                class="card-actions"
+                                            >
+
+                                                <button
+                                                    class="action-btn"
+                                                    onclick="copyMessage(${msg.id})"
+                                                    title="Copy"
+                                                >
+                                                    📋
+                                                </button>
+
+
+                                                <button
+                                                    class="action-btn"
+                                                    onclick="shareMessage(${msg.id})"
+                                                    title="Share"
+                                                >
+                                                    🔗
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </article>
+
+                            `;
+
+                        }
+                    )
+                    .join('');
+
+        }
+
+
+        /* =========================
+           SECURITY
+        ========================= */
+
+        function escapeHtml(text) {
+
+            const div =
+                document.createElement(
+                    'div'
+                );
+
+
+            div.textContent =
+                text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =========================
+           COPY
+        ========================= */
+
+        function copyMessage(id) {
+
+            const msg =
+                allMessages.find(
+                    m => m.id === id
+                );
+
+
+            if (!msg) return;
+
+
+            navigator.clipboard
+                .writeText(msg.text)
+                .then(() => {
+
+                    showToast(
+                        'Copied to clipboard!'
+                    );
+
+                });
+
+        }
+
+
+        /* =========================
+           SHARE
+        ========================= */
+
+        function shareMessage(id) {
+
+            const msg =
+                allMessages.find(
+                    m => m.id === id
+                );
+
+
+            if (!msg) return;
+
+
+            if (navigator.share) {
+
+                navigator.share({
+
+                    title:
+                        'Izandla Zagezana Opportunity',
+
+                    text:
+                        msg.text
+
+                });
+
+            } else {
+
+                copyMessage(id);
+
+                showToast(
+                    'Copied — share API not available'
+                );
+
+            }
+
+        }
+
+
+        /* =========================
+           DEMO DATA
+        ========================= */
+
+        function loadDemoData() {
+
+            const demoMessages = [
+
+                {
+                    id: 1,
+
+                    text:
+`🚀 Junior Software Developer Position
+
+Company: TechStart SA
+Location: Johannesburg (Hybrid)
+Salary: R25,000 - R35,000/month
+
+Requirements:
+• Degree in Computer Science or related field
+• 1-2 years experience with JavaScript/Python
+• Strong problem-solving skills
+
+Apply by: 30 August 2026
+Send CV to: careers@techstart.co.za
+
+#job #tech #developer`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 2
+                        ),
+
+                    author:
+                        "Thabo Molefe",
+
+                    authorUsername:
+                        "thabo_m"
+                },
+
+
+                {
+                    id: 2,
+
+                    text:
+`📚 Bursary Opportunity: Engineering Students
+
+Anglo American is offering full bursaries for 2027!
+
+Fields: Mining Engineering, Mechanical, Electrical
+Value: Full tuition + accommodation + monthly stipend
+
+Requirements:
+• Matric with Maths & Science (Level 6+)
+• South African citizen
+• Financial need considered
+
+Closing: 15 September 2026
+Apply: www.angloamerican.co.za/bursaries
+
+#bursary #engineering #students`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 5
+                        ),
+
+                    author:
+                        "Nomsa Dlamini",
+
+                    authorUsername:
+                        "nomsa_d"
+                },
+
+
+                {
+                    id: 3,
+
+                    text:
+`💼 Marketing Internship - 12 Months
+
+Brand Warriors Agency | Cape Town
+Stipend: R8,000/month
+
+What you'll do:
+• Social media management
+• Content creation
+• Campaign analytics
+• Client liaison
+
+Who we're looking for:
+• Recent marketing/communications graduate
+• Creative thinker with Canva/Adobe skills
+• Available immediately
+
+Email portfolio to: internships@brandwarriors.co.za
+
+#internship #marketing #capetown`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 8
+                        ),
+
+                    author:
+                        "Lerato Khumalo",
+
+                    authorUsername:
+                        "lerato_k"
+                },
+
+
+                {
+                    id: 4,
+
+                    text:
+`🏥 Nursing Bursary - Department of Health
+
+Full bursary for 4-year nursing degree
+Institution: Various universities across SA
+
+Includes:
+✅ Tuition fees
+✅ Accommodation
+✅ Books and equipment
+✅ Monthly allowance
+
+Service obligation: Work for DOH for equal years funded
+
+Apply online before 30 September 2026
+Link in bio or visit www.health.gov.za
+
+#nursing #bursary #healthcare`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 12
+                        ),
+
+                    author:
+                        "Dr. Sipho Nkosi",
+
+                    authorUsername:
+                        "dr_sipho"
+                },
+
+
+                {
+                    id: 5,
+
+                    text:
+`🔧 Diesel Mechanic Apprenticeship
+
+Transnet Freight Rail is recruiting!
+
+Location: Durban, KZN
+Duration: 4 years (NQF Level 4)
+
+Requirements:
+• Grade 12 with Maths & Physical Science
+• N2 certificate advantageous
+• Medically fit
+• Driver's license preferred
+
+Stipend: R4,500/month (increases yearly)
+
+Apply: careers.transnet.net
+Ref: TFR-APP-2026-042
+
+#apprenticeship #transnet #mechanic`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 15
+                        ),
+
+                    author:
+                        "Themba Ndlovu",
+
+                    authorUsername:
+                        "themba_n"
+                },
+
+
+                {
+                    id: 6,
+
+                    text:
+`🎓 Data Science Learnership
+
+Explore AI Academy is offering a 12-month learnership
+
+Location: Remote (with monthly meetups in PTA/JHB)
+
+You'll learn:
+• Python & SQL
+• Machine Learning fundamentals
+• Data visualization
+• Cloud platforms (AWS/Azure)
+
+Stipend: R6,500/month
+No experience needed - just passion for data!
+
+Applications close 10 September 2026
+Apply: www.exploreai.academy/apply
+
+#learnership #datascience #remote`,
+
+                    date:
+                        new Date(
+                            Date.now() -
+                            86400000 * 18
+                        ),
+
+                    author:
+                        "Zanele Mokoena",
+
+                    authorUsername:
+                        "zanele_m"
+                }
+
+            ];
+
+
+            allMessages =
+                demoMessages;
+
+
+            renderMessages();
+
+
+            document.getElementById(
+                'stat-opportunities'
+            ).textContent =
+                demoMessages.length;
+
+
+            showToast(
+                'Demo data loaded! Connect Telegram for live data.'
+            );
+
+
+            toggleAdmin();
+
+        }
+
+    </script>
+
+</body>
+</html>
