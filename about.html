@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us — Izandla Zagezana</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --terracotta: #C75B39;
+            --terracotta-light: #E07A5F;
+            --gold: #D4A843;
+            --gold-light: #F2CC8F;
+            --deep-green: #2D6A4F;
+            --forest: #1B4332;
+            --warm-cream: #FDF6E3;
+            --sand: #F5E6D3;
+            --charcoal: #1A1A2E;
+            --slate: #4A4E69;
+            --light-slate: #9A8C98;
+            --white: #FFFFFF;
+            --shadow: rgba(26, 26, 46, 0.08);
+            --shadow-lg: rgba(26, 26, 46, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(27, 67, 50, 0.97);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-button {
+            background: var(--terracotta);
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+
+        .nav-button:hover {
+            background: var(--gold);
+            color: var(--charcoal) !important;
+        }
+
+        /* Mobile menu */
+
+        .menu-button {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(27,67,50,0.98),
+                    rgba(45,106,79,0.95),
+                    rgba(199,91,57,0.92)
+                );
+
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: auto;
+            font-size: 1.15rem;
+            font-weight: 300;
+            opacity: 0.92;
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .label {
+            color: var(--terracotta);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--slate);
+        }
+
+        /* =========================
+           STORY
+        ========================= */
+
+        .story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-card {
+            background: var(--white);
+            padding: 42px;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px var(--shadow-lg);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .story-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .story-card p {
+            color: var(--slate);
+            margin-bottom: 18px;
+        }
+
+        .founder-card {
+            background: linear-gradient(
+                145deg,
+                var(--forest),
+                var(--deep-green)
+            );
+
+            color: var(--white);
+            border-radius: 28px;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(27,67,50,0.25);
+        }
+
+        .founder-card::after {
+            content: "IZ";
+            position: absolute;
+            right: -20px;
+            bottom: -50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            font-weight: 900;
+            opacity: 0.05;
+        }
+
+        .founder-label {
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .founder-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .founder-title {
+            color: var(--gold-light);
+            margin-bottom: 25px;
+        }
+
+        .founder-card p {
+            opacity: 0.9;
+        }
+
+        /* =========================
+           MISSION
+        ========================= */
+
+        .mission-section {
+            background: var(--sand);
+        }
+
+        .mission-grid {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .mission-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 6px 25px var(--shadow);
+            transition: 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px var(--shadow-lg);
+        }
+
+        .mission-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .mission-card p {
+            color: var(--slate);
+            font-size: 0.92rem;
+        }
+
+        /* =========================
+           JOBS + BUSINESS
+        ========================= */
+
+        .pathway {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .pathway-card {
+            padding: 40px;
+            border-radius: 24px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pathway-card.jobs {
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--terracotta-light)
+            );
+        }
+
+        .pathway-card.business {
+            background: linear-gradient(
+                135deg,
+                var(--forest),
+                var(--deep-green)
+            );
+        }
+
+        .pathway-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .pathway-card p {
+            opacity: 0.9;
+            max-width: 450px;
+        }
+
+        .pathway-link {
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 25px;
+            background: var(--white);
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .pathway-link:hover {
+            transform: translateY(-2px);
+            background: var(--gold-light);
+        }
+
+        /* =========================
+           BELIEF
+        ========================= */
+
+        .belief {
+            background: var(--forest);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .belief-content {
+            max-width: 850px;
+            margin: auto;
+            padding: 90px 24px;
+        }
+
+        .belief h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 25px;
+        }
+
+        .belief h2 span {
+            color: var(--gold-light);
+        }
+
+        .belief p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .quote {
+            margin-top: 35px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .footer-container p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            opacity: 0.7;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .footer-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .copyright {
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 74px;
+                left: 0;
+                right: 0;
+                background: var(--forest);
+                flex-direction: column;
+                padding: 25px;
+                gap: 20px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .story,
+            .pathway {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 75px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .story-card,
+            .founder-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🤝</div>
+                <div class="logo-text">Izandla Zagezana</div>
+            </a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                ☰
+            </button>
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About Us</a>
+
+                <a href="business.html">Start My Business</a>
+
+                <a href="cv.html">Create CV</a>
+
+                <a href="documents.html">Scan Documents</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                🇿🇦 Built for South Africa
+            </div>
+
+            <h1>
+                About <span>Izandla Zagezana</span>
+            </h1>
+
+            <p>
+                A community-focused program created to help South Africans
+                navigate opportunities, employment, entrepreneurship and
+                the tools they need to build a better future.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         OUR STORY
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="label">Our Story</div>
+
+            <h2>Why Izandla Zagezana Exists</h2>
+
+            <p>
+                We believe that opportunity should be easier to find,
+                understand and access.
+            </p>
+
+        </div>
+
+
+        <div class="story">
+
+            <div class="story-card">
+
+                <h2>Our Purpose</h2>
+
+                <p>
+                    Izandla Zagezana was founded to help young people in
+                    South Africa navigate the challenges of unemployment
+                    and finding opportunities.
+                </p>
+
+                <p>
+                    Many young people have the ability and ambition to work,
+                    but finding legitimate opportunities, preparing the right
+                    documents and understanding where to start can be difficult.
+                </p>
+
+                <p>
+                    Our goal is to make that journey easier by bringing useful
+                    resources and guidance together in one place.
+                </p>
+
+                <p>
+                    The name <strong>Izandla Zagezana</strong> comes from the
+                    idea that when people help one another, everyone benefits.
+                </p>
+
+            </div>
+
+
+            <div class="founder-card">
+
+                <div class="founder-label">
+                    Founder
+                </div>
+
+                <h2>Thulane Nonyane</h2>
+
+                <div class="founder-title">
+                    A.K.A Wayray — South African Music Artist & Businessman
+                </div>
+
+                <p>
+                    Thulane Nonyane, also known as Wayray, founded this program
+                    with the vision of creating a practical platform that can
+                    help young South Africans find opportunities and take steps
+                    toward becoming economically independent.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OUR MISSION
+    ========================= -->
+
+    <section class="mission-section">
+
+        <div class="section-header" style="padding: 70px 24px 0; margin-bottom: 0;">
+
+            <div class="label">Our Mission</div>
+
+            <h2>More Than Finding Jobs</h2>
+
+            <p>
+                Employment is important, but building a stronger economy
+                also means helping people create opportunities themselves.
+            </p>
+
+        </div>
+
+
+        <div class="mission-grid">
+
+            <div class="mission-card">
+
+                <div class="mission-icon">
+                    💼
+                </div>
+
+                <h3>Find Opportunities</h3>
+
+                <p>
+                    Help young South Africans discover jobs, internships,
+                    bursaries, learnerships and other opportunities more easily.
+                </p>
+
+            </div>
+
+
+            <div class="mission-card">
+
+                <div class="mission-icon">
+                    🚀
+                </div>
+
+                <h3>Start a Business</h3>
+
+                <p>
+                    Guide aspiring entrepreneurs through the basics of starting
+                    and registering a business in South Africa, including
+                    important requirements to consider.
+                </p>
+
+            </div>
+
+
+            <div class="mission-card">
+
+                <div class="mission-icon">
+                    📄
+                </div>
+
+                <h3>Prepare for Success</h3>
+
+                <p>
+                    Give users practical tools that can help them prepare,
+                    including creating a CV and managing important documents.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         JOBS & BUSINESS
+    ========================= -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="label">Our Vision</div>
+
+            <h2>Jobs Need Businesses</h2>
+
+            <p>
+                We believe employment and entrepreneurship are connected.
+                A stronger business environment can create more opportunities
+                for people looking for work.
+            </p>
+
+        </div>
+
+
+        <div class="pathway">
+
+            <div class="pathway-card jobs">
+
+                <div>
+
+                    <h3>Looking for a Job?</h3>
+
+                    <p>
+                        Explore opportunities and make it easier to navigate
+                        your search for employment. We want to help connect
+                        people with information that can move them closer
+                        to their next opportunity.
+                    </p>
+
+                </div>
+
+                <a href="index.html" class="pathway-link">
+                    Find Opportunities →
+                </a>
+
+            </div>
+
+
+            <div class="pathway-card business">
+
+                <div>
+
+                    <h3>Want to Start a Business?</h3>
+
+                    <p>
+                        Not everyone has to wait for a job. If you have a
+                        business idea, we can help you understand where to
+                        begin, including business registration and some of
+                        the requirements involved in South Africa.
+                    </p>
+
+                </div>
+
+                <a href="business.html" class="pathway-link">
+                    How to Start My Business →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BELIEF
+    ========================= -->
+
+    <section class="belief">
+
+        <div class="belief-content">
+
+            <h2>
+                When We Help Each Other,
+                <span>We All Move Forward.</span>
+            </h2>
+
+            <p>
+                Izandla Zagezana is built around a simple belief:
+                people should not have to navigate unemployment,
+                entrepreneurship and opportunity alone.
+            </p>
+
+            <div class="quote">
+                “Together we fight unemployment.”
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                Izandla Zagezana
+            </div>
+
+            <p>
+                Helping South Africans navigate opportunities,
+                entrepreneurship and the tools needed to build a better future.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About Us</a>
+
+                <a href="business.html">Start My Business</a>
+
+                <a href="cv.html">Create CV</a>
+
+                <a href="documents.html">Scan Documents</a>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 Izandla Zagezana. Built for South Africa.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function toggleMenu() {
+
+            const nav = document.getElementById("navLinks");
+
+            nav.classList.toggle("active");
+
+        }
+
+    </script>
+
+</body>
+</html>
