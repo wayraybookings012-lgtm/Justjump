@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Izandla Zagezana — Together We Fight Unemployment</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --terracotta: #C75B39;
+            --terracotta-light: #E07A5F;
+            --gold: #D4A843;
+            --gold-light: #F2CC8F;
+            --deep-green: #2D6A4F;
+            --forest: #1B4332;
+            --warm-cream: #FDF6E3;
+            --sand: #F5E6D3;
+            --charcoal: #1A1A2E;
+            --slate: #4A4E69;
+            --light-slate: #9A8C98;
+            --white: #FFFFFF;
+            --border: #E8E8EC;
+            --shadow: rgba(26, 26, 46, 0.08);
+            --shadow-lg: rgba(26, 26, 46, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+
+            max-width: 1200px;
+            margin: auto;
+            padding: 24px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .nav-links .nav-btn {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .nav-links .nav-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 600px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(27,67,50,0.98),
+                    rgba(45,106,79,0.95) 50%,
+                    rgba(199,91,57,0.95)
+                );
+
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+            opacity: 0.8;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 150px 24px 100px;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+
+            padding: 9px 18px;
+            border-radius: 50px;
+
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+
+            margin-bottom: 24px;
+        }
+
+        .pulse {
+            width: 9px;
+            height: 9px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .5;
+                transform: scale(1.3);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 1;
+            font-weight: 900;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-light);
+        }
+
+        .hero-slogan {
+            max-width: 700px;
+
+            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+            font-weight: 300;
+
+            opacity: .9;
+
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero-button {
+            text-decoration: none;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 24px;
+            border-radius: 12px;
+
+            font-weight: 700;
+            font-size: .92rem;
+
+            transition: .3s ease;
+        }
+
+        .hero-button.primary {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .hero-button.primary:hover {
+            transform: translateY(-3px);
+            background: var(--gold-light);
+        }
+
+        .hero-button.secondary {
+            border: 1px solid rgba(255,255,255,.35);
+            color: white;
+            background: rgba(255,255,255,.08);
+        }
+
+        .hero-button.secondary:hover {
+            background: rgba(255,255,255,.16);
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main-content {
+            max-width: 1200px;
+            margin: -55px auto 0;
+            padding: 0 24px 80px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* =========================
+           INTRO CARD
+        ========================= */
+
+        .intro-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 35px;
+
+            box-shadow: 0 15px 45px var(--shadow-lg);
+
+            margin-bottom: 55px;
+        }
+
+        .intro-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            color: var(--slate);
+            max-width: 800px;
+        }
+
+        /* =========================
+           SECTION HEADERS
+        ========================= */
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header .small-title {
+            color: var(--terracotta);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--slate);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* =========================
+           JOB GRID
+        ========================= */
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .job-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+
+            border: 1px solid rgba(0,0,0,.04);
+
+            box-shadow: 0 5px 25px var(--shadow);
+
+            transition: .4s cubic-bezier(.175,.885,.32,1.275);
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px var(--shadow-lg);
+        }
+
+        .job-top {
+            padding: 22px 24px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--forest),
+                    var(--deep-green)
+                );
+
+            color: white;
+        }
+
+        .job-category {
+            display: inline-block;
+
+            padding: 5px 11px;
+
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.2);
+
+            border-radius: 50px;
+
+            font-size: .7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+
+        .business-name {
+            font-size: .85rem;
+            opacity: .8;
+        }
+
+        .job-body {
+            padding: 22px 24px;
+            flex: 1;
+        }
+
+        .job-info {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .job-info-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: .85rem;
+        }
+
+        .job-info-icon {
+            width: 25px;
+            flex-shrink: 0;
+        }
+
+        .job-info strong {
+            color: var(--charcoal);
+        }
+
+        .job-description {
+            color: var(--slate);
+            font-size: .9rem;
+            margin-bottom: 20px;
+        }
+
+        .job-subtitle {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin: 15px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .requirements {
+            padding-left: 20px;
+            color: var(--slate);
+            font-size: .84rem;
+        }
+
+        .requirements li {
+            margin-bottom: 5px;
+        }
+
+        .job-footer {
+            padding: 18px 24px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .apply-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            background: linear-gradient(
+                135deg,
+                var(--terracotta),
+                var(--gold)
+            );
+
+            color: white;
+
+            font-weight: 700;
+            font-size: .86rem;
+
+            transition: .3s ease;
+        }
+
+        .apply-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(199,91,57,.25);
+        }
+
+        /* =========================
+           MINI CV
+        ========================= */
+
+        .cv-section {
+            margin-top: 75px;
+        }
+
+        .cv-card {
+            background: var(--white);
+            border-radius: 22px;
+
+            padding: 35px;
+
+            box-shadow: 0 8px 30px var(--shadow);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .cv-preview {
+            border: 1px solid var(--border);
+            padding: 30px;
+
+            background: #fff;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,.04);
+        }
+
+        .cv-preview h3 {
+            text-align: center;
+
+            font-family: "Times New Roman", Times, serif;
+
+            font-size: 1.25rem;
+
+            text-decoration: underline;
+
+            margin-bottom: 25px;
+        }
+
+        .cv-preview h4 {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .cv-preview p,
+        .cv-preview li {
+            font-family: "Times New Roman", Times, serif;
+            font-size: .95rem;
+        }
+
+        .cv-preview ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .cv-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cv-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .cv-info p {
+            color: var(--slate);
+            margin-bottom: 20px;
+        }
+
+        .create-cv-button {
+            display: inline-flex;
+            width: fit-content;
+
+            text-decoration: none;
+
+            background: var(--forest);
+            color: white;
+
+            padding: 14px 24px;
+            border-radius: 11px;
+
+            font-weight: 700;
+
+            transition: .3s ease;
+        }
+
+        .create-cv-button:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .how-section {
+            margin-top: 75px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .step {
+            background: white;
+            padding: 28px;
+
+            border-radius: 18px;
+
+            box-shadow: 0 5px 22px var(--shadow);
+
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--sand);
+            color: var(--terracotta);
+
+            font-weight: 900;
+        }
+
+        .step h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--slate);
+            font-size: .88rem;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            background: var(--charcoal);
+            color: white;
+
+            padding: 60px 24px;
+
+            text-align: center;
+        }
+
+        .footer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,.65);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,.1);
+
+            font-size: .75rem;
+            color: rgba(255,255,255,.45);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .jobs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cv-card {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 18px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 3px;
+            }
+
+            .nav-links a {
+                padding: 8px 9px;
+                font-size: .75rem;
+            }
+
+            .hero-content {
+                padding: 130px 20px 80px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .main-content {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .intro-card {
+                padding: 25px;
+            }
+
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-card {
+                padding: 20px;
+            }
+
+            .cv-preview {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+        Izandla Zagezana
+    </a>
+
+    <div class="nav-links">
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="cv.html" class="nav-btn">
+            Create CV
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            <span class="pulse"></span>
+            Community-Powered Opportunities
+        </div>
+
+        <h1>
+            Izandla <span>Zagezana</span>
+        </h1>
+
+        <p class="hero-slogan">
+            Together we fight unemployment. Connecting South Africans
+            with opportunities, information and tools to build a better future.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#opportunities" class="hero-button primary">
+                View Opportunities
+            </a>
+
+            <a href="cv.html" class="hero-button secondary">
+                Create My CV
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="main-content">
+
+
+    <!-- INTRO -->
+
+    <section class="intro-card">
+
+        <h2>
+            Opportunities should be easier to find.
+        </h2>
+
+        <p>
+            Izandla Zagezana was created to make it easier for people
+            to discover employment opportunities and prepare themselves
+            for the world of work. Browse the opportunities below and
+            create a professional CV that you can use when applying.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         JOB OPPORTUNITIES
+    ========================= -->
+
+    <section id="opportunities">
+
+        <div class="section-header">
+
+            <div class="small-title">
+                Latest Opportunities
+            </div>
+
+            <h2>
+                Find Your Next Opportunity
+            </h2>
+
+            <p>
+                Explore opportunities shared with our community.
+                Always check the closing date and application requirements
+                before applying.
+            </p>
+
+        </div>
+
+
+        <div class="jobs-grid">
+
+
+            <!-- JOB 1 -->
+
+            <article class="job-card">
+
+                <div class="job-top">
+
+                    <span class="job-category">
+                        Full-Time
+                    </span>
+
+                    <h3 class="job-title">
+                        Junior Administrative Assistant
+                    </h3>
+
+                    <div class="business-name">
+                        Mzansi Business Solutions
+                    </div>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <div class="job-info">
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📍</span>
+                            <span>
+                                <strong>Address:</strong>
+                                25 Commissioner Street,
+                                Johannesburg, Gauteng
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">💰</span>
+                            <span>
+                                <strong>Salary:</strong>
+                                R9,500 – R12,000 per month
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📅</span>
+                            <span>
+                                <strong>Closing:</strong>
+                                30 September 2026
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">✉️</span>
+                            <span>
+                                <strong>Email:</strong>
+                                careers@mzansibusiness.co.za
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-description">
+                        We are looking for a motivated Junior Administrative
+                        Assistant to support our office team with daily
+                        administrative tasks, customer communication,
+                        document preparation and basic computer work.
+                    </p>
+
+
+                    <div class="job-subtitle">
+                        Education Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Grade 12 / Matric required</li>
+                        <li>Computer literacy preferred</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Experience Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>0–2 years administrative experience</li>
+                        <li>Entry-level applicants are welcome</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Additional Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Good communication skills</li>
+                        <li>English language proficiency</li>
+                        <li>Professional attitude</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="job-footer">
+
+                    <a
+                        href="mailto:careers@mzansibusiness.co.za?subject=Application - Junior Administrative Assistant"
+                        class="apply-button"
+                    >
+                        Apply via Email
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- JOB 2 -->
+
+            <article class="job-card">
+
+                <div class="job-top">
+
+                    <span class="job-category">
+                        Internship
+                    </span>
+
+                    <h3 class="job-title">
+                        Digital Marketing Intern
+                    </h3>
+
+                    <div class="business-name">
+                        Ubuntu Creative Agency
+                    </div>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <div class="job-info">
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📍</span>
+                            <span>
+                                <strong>Address:</strong>
+                                18 Long Street,
+                                Cape Town, Western Cape
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">💰</span>
+                            <span>
+                                <strong>Salary:</strong>
+                                R7,500 monthly stipend
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📅</span>
+                            <span>
+                                <strong>Closing:</strong>
+                                15 October 2026
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">✉️</span>
+                            <span>
+                                <strong>Email:</strong>
+                                jobs@ubuntocreative.co.za
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-description">
+                        Ubuntu Creative Agency is looking for a creative
+                        individual to assist with social media content,
+                        digital campaigns, research and communication.
+                    </p>
+
+
+                    <div class="job-subtitle">
+                        Education Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Grade 12 / Matric</li>
+                        <li>Marketing, Media or Communication qualification preferred</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Experience Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Previous marketing experience is advantageous</li>
+                        <li>Students and graduates may apply</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Additional Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Social media knowledge</li>
+                        <li>Creative thinking</li>
+                        <li>Good written English</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="job-footer">
+
+                    <a
+                        href="mailto:jobs@ubuntocreative.co.za?subject=Application - Digital Marketing Intern"
+                        class="apply-button"
+                    >
+                        Apply via Email
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- JOB 3 -->
+
+            <article class="job-card">
+
+                <div class="job-top">
+
+                    <span class="job-category">
+                        Entry Level
+                    </span>
+
+                    <h3 class="job-title">
+                        Customer Service Representative
+                    </h3>
+
+                    <div class="business-name">
+                        Siyakhula Services
+                    </div>
+
+                </div>
+
+
+                <div class="job-body">
+
+                    <div class="job-info">
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📍</span>
+                            <span>
+                                <strong>Address:</strong>
+                                42 Nelson Mandela Road,
+                                Durban, KwaZulu-Natal
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">💰</span>
+                            <span>
+                                <strong>Salary:</strong>
+                                R10,000 – R13,000 per month
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">📅</span>
+                            <span>
+                                <strong>Closing:</strong>
+                                5 October 2026
+                            </span>
+                        </div>
+
+                        <div class="job-info-row">
+                            <span class="job-info-icon">✉️</span>
+                            <span>
+                                <strong>Email:</strong>
+                                recruitment@siyakhula.co.za
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <p class="job-description">
+                        Join our customer support team and assist customers
+                        through telephone, email and face-to-face communication.
+                        Training will be provided to suitable candidates.
+                    </p>
+
+
+                    <div class="job-subtitle">
+                        Education Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Grade 12 / Matric required</li>
+                        <li>Additional customer-service training advantageous</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Experience Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>0–2 years customer service experience</li>
+                        <li>Call centre experience advantageous</li>
+                    </ul>
+
+
+                    <div class="job-subtitle">
+                        Additional Requirements
+                    </div>
+
+                    <ul class="requirements">
+                        <li>Good communication skills</li>
+                        <li>English proficiency</li>
+                        <li>Ability to work under pressure</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="job-footer">
+
+                    <a
+                        href="mailto:recruitment@siyakhula.co.za?subject=Application - Customer Service Representative"
+                        class="apply-button"
+                    >
+                        Apply via Email
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MINI CV
+    ========================= -->
+
+    <section class="cv-section">
+
+        <div class="section-header">
+
+            <div class="small-title">
+                Prepare Yourself
+            </div>
+
+            <h2>
+                Your CV Opens the Door
+            </h2>
+
+            <p>
+                A good opportunity needs a good application.
+                Create a professional CV with our CV builder.
+            </p>
+
+        </div>
+
+
+        <div class="cv-card">
+
+
+            <!-- CV PREVIEW -->
+
+            <div class="cv-preview">
+
+                <h3>
+                    CURRICULUM VITAE
+                </h3>
+
+                <h4>
+                    Jaff Mabaso
+                </h4>
+
+                <p>
+                    Language: English
+                </p>
+
+                <br>
+
+                <h4>
+                    Personal Profile
+                </h4>
+
+                <p>
+                    Motivated South African job seeker seeking an opportunity
+                    to develop professional skills, contribute to an organisation
+                    and grow through practical experience.
+                </p>
+
+                <br>
+
+                <h4>
+                    Skills
+                </h4>
+
+                <ul>
+                    <li>Communication</li>
+                    <li>Teamwork</li>
+                    <li>Problem solving</li>
+                    <li>Computer literacy</li>
+                </ul>
+
+                <h4>
+                    Languages
+                </h4>
+
+                <p>
+                    English
+                </p>
+
+            </div>
+
+
+            <!-- CV DESCRIPTION -->
+
+            <div class="cv-info">
+
+                <h3>
+                    Need a CV?
+                </h3>
+
+                <p>
+                    You don't have to struggle with complicated CV templates.
+                    Our CV builder helps you choose the information you want
+                    to include and generates professional CV versions for you.
+                </p>
+
+                <p>
+                    Add your personal information, education, experience,
+                    skills, languages and other details before downloading
+                    your CV.
+                </p>
+
+                <a
+                    href="cv.html"
+                    class="create-cv-button"
+                >
+                    Create My CV →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================= -->
+
+    <section class="how-section">
+
+        <div class="section-header">
+
+            <div class="small-title">
+                Simple Process
+            </div>
+
+            <h2>
+                Start With Three Steps
+            </h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Find an Opportunity
+                </h3>
+
+                <p>
+                    Browse the available job advertisements
+                    and check which opportunity matches your skills.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Create Your CV
+                </h3>
+
+                <p>
+                    Enter your information into our CV builder
+                    and prepare a professional CV.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Apply
+                </h3>
+
+                <p>
+                    Follow the application instructions provided
+                    by the business before the closing date.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <h3>
+        Izandla Zagezana
+    </h3>
+
+    <p>
+        When hands wash each other, both become clean.
+        Together, we can help South Africans find opportunities,
+        build businesses and create a better future.
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="cv.html">
+            Create CV
+        </a>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 Izandla Zagezana. Built to help our community.
+    </div>
+
+</footer>
+
+
+</body>
+</html>
