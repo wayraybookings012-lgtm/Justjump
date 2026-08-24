@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Izandla Zagezana — Together We Fight Unemployment</title>
+    <title>Prefino...Izandla Zagezana — Together We Fight Unemployment</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -75,15 +75,16 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
-            padding: 10px 16px;
+            padding: 10px 14px;
             border-radius: 10px;
             transition: 0.3s ease;
         }
@@ -184,7 +185,6 @@
             font-size: clamp(3rem, 7vw, 5.5rem);
             line-height: 1;
             font-weight: 900;
-
             margin-bottom: 22px;
         }
 
@@ -243,6 +243,7 @@
 
         .hero-button.secondary:hover {
             background: rgba(255,255,255,.16);
+            transform: translateY(-2px);
         }
 
         /* =========================
@@ -574,6 +575,132 @@
         }
 
         /* =========================
+           DOCUMENT SECTION
+        ========================= */
+
+        .documents-section {
+            margin-top: 75px;
+        }
+
+        .documents-card {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+
+            box-shadow: 0 8px 30px var(--shadow);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+
+            align-items: center;
+        }
+
+        .documents-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .documents-info p {
+            color: var(--slate);
+            margin-bottom: 20px;
+        }
+
+        .documents-button {
+            display: inline-flex;
+            text-decoration: none;
+
+            background: var(--terracotta);
+            color: white;
+
+            padding: 14px 24px;
+            border-radius: 11px;
+
+            font-weight: 700;
+
+            transition: .3s ease;
+        }
+
+        .documents-button:hover {
+            background: var(--deep-green);
+            transform: translateY(-2px);
+        }
+
+        .document-preview {
+            background: var(--sand);
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            font-size: 4rem;
+        }
+
+        .document-preview p {
+            font-size: 1rem;
+            color: var(--slate);
+            margin-top: 10px;
+        }
+
+        /* =========================
+           BUSINESS SECTION
+        ========================= */
+
+        .business-section {
+            margin-top: 75px;
+        }
+
+        .business-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--forest),
+                    var(--deep-green)
+                );
+
+            color: white;
+
+            border-radius: 22px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            box-shadow: 0 12px 35px var(--shadow-lg);
+        }
+
+        .business-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .business-card p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            opacity: .85;
+        }
+
+        .business-button {
+            display: inline-flex;
+            text-decoration: none;
+
+            background: var(--gold);
+            color: var(--charcoal);
+
+            padding: 14px 25px;
+            border-radius: 11px;
+
+            font-weight: 700;
+
+            transition: .3s ease;
+        }
+
+        .business-button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
            HOW IT WORKS
         ========================= */
 
@@ -689,12 +816,17 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            .cv-card {
+            .cv-card,
+            .documents-card {
                 grid-template-columns: 1fr;
             }
 
             .steps {
                 grid-template-columns: 1fr;
+            }
+
+            .nav-links a {
+                padding: 8px 9px;
             }
         }
 
@@ -702,6 +834,7 @@
 
             .navbar {
                 padding: 18px;
+                align-items: flex-start;
             }
 
             .logo {
@@ -709,12 +842,13 @@
             }
 
             .nav-links {
-                gap: 3px;
+                gap: 2px;
+                justify-content: flex-end;
             }
 
             .nav-links a {
-                padding: 8px 9px;
-                font-size: .75rem;
+                padding: 7px 6px;
+                font-size: .68rem;
             }
 
             .hero-content {
@@ -738,12 +872,21 @@
                 grid-template-columns: 1fr;
             }
 
-            .cv-card {
+            .cv-card,
+            .documents-card {
                 padding: 20px;
             }
 
-            .cv-preview {
-                padding: 20px;
+            .business-card {
+                padding: 30px 20px;
+            }
+
+            .business-card h2 {
+                font-size: 2rem;
+            }
+
+            .document-preview {
+                padding: 25px;
             }
         }
     </style>
@@ -763,12 +906,24 @@
 
     <div class="nav-links">
 
+        <a href="index.html">
+            Home
+        </a>
+
         <a href="about.html">
             About Us
         </a>
 
+        <a href="business.html">
+            Start My Business
+        </a>
+
         <a href="cv.html" class="nav-btn">
             Create CV
+        </a>
+
+        <a href="documents.html">
+            Scan Documents
         </a>
 
     </div>
@@ -806,6 +961,10 @@
 
             <a href="cv.html" class="hero-button secondary">
                 Create My CV
+            </a>
+
+            <a href="documents.html" class="hero-button secondary">
+                Scan Documents
             </a>
 
         </div>
@@ -973,7 +1132,7 @@
                 <div class="job-footer">
 
                     <a
-                        href="mailto:careers@mzansibusiness.co.za?subject=Application - Junior Administrative Assistant"
+                        href="mailto:careers@mzansibusiness.co.za?subject=Application%20-%20Junior%20Administrative%20Assistant"
                         class="apply-button"
                     >
                         Apply via Email
@@ -1089,7 +1248,7 @@
                 <div class="job-footer">
 
                     <a
-                        href="mailto:jobs@ubuntocreative.co.za?subject=Application - Digital Marketing Intern"
+                        href="mailto:jobs@ubuntocreative.co.za?subject=Application%20-%20Digital%20Marketing%20Intern"
                         class="apply-button"
                     >
                         Apply via Email
@@ -1205,7 +1364,7 @@
                 <div class="job-footer">
 
                     <a
-                        href="mailto:recruitment@siyakhula.co.za?subject=Application - Customer Service Representative"
+                        href="mailto:recruitment@siyakhula.co.za?subject=Application%20-%20Customer%20Service%20Representative"
                         class="apply-button"
                     >
                         Apply via Email
@@ -1245,9 +1404,6 @@
 
 
         <div class="cv-card">
-
-
-            <!-- CV PREVIEW -->
 
             <div class="cv-preview">
 
@@ -1299,8 +1455,6 @@
             </div>
 
 
-            <!-- CV DESCRIPTION -->
-
             <div class="cv-info">
 
                 <h3>
@@ -1327,6 +1481,98 @@
                 </a>
 
             </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DOCUMENTS
+    ========================= -->
+
+    <section class="documents-section">
+
+        <div class="section-header">
+
+            <div class="small-title">
+                Keep Your Documents Ready
+            </div>
+
+            <h2>
+                Scan Your Documents
+            </h2>
+
+            <p>
+                Prepare important documents that you may need when applying
+                for jobs, opportunities or other services.
+            </p>
+
+        </div>
+
+
+        <div class="documents-card">
+
+            <div class="documents-info">
+
+                <h3>
+                    Scan & Prepare
+                </h3>
+
+                <p>
+                    Use the document scanner to capture important documents
+                    such as certificates, identification documents and other
+                    paperwork.
+                </p>
+
+                <a
+                    href="documents.html"
+                    class="documents-button"
+                >
+                    Scan Documents →
+                </a>
+
+            </div>
+
+
+            <div class="document-preview">
+
+                📄
+
+                <p>
+                    Your documents, ready when you need them.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BUSINESS
+    ========================= -->
+
+    <section class="business-section">
+
+        <div class="business-card">
+
+            <h2>
+                Want to Start Your Own Business?
+            </h2>
+
+            <p>
+                Learn how to turn an idea into a business. Get guidance
+                on planning, starting and developing your business.
+            </p>
+
+            <a
+                href="business.html"
+                class="business-button"
+            >
+                Start My Business →
+            </a>
 
         </div>
 
@@ -1434,12 +1680,24 @@
 
     <div class="footer-links">
 
+        <a href="index.html">
+            Home
+        </a>
+
         <a href="about.html">
             About Us
         </a>
 
+        <a href="business.html">
+            Start My Business
+        </a>
+
         <a href="cv.html">
             Create CV
+        </a>
+
+        <a href="documents.html">
+            Scan Documents
         </a>
 
     </div>
@@ -1453,4 +1711,4 @@
 
 
 </body>
-</html>
+    </html>
