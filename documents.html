@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Izandla Zagezana — Document Scanner</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Prefino-Izandla Zagezana — Document Scanner</title>
+
+<!-- jsPDF: used to create real PDF files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
+
 :root{
     --black:#111111;
     --dark:#1d1d1d;
@@ -70,6 +79,10 @@ h2{
     margin-bottom:20px;
 }
 
+/* --------------------------------------------------
+   UPLOAD
+-------------------------------------------------- */
+
 .upload-options{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -114,6 +127,10 @@ input[type=file]{
     display:none!important;
 }
 
+/* --------------------------------------------------
+   CROP
+-------------------------------------------------- */
+
 .crop-section{
     margin-top:20px;
 }
@@ -157,10 +174,33 @@ input[type=file]{
     border-radius:4px;
 }
 
-.tl{left:-10px;top:-10px;cursor:nwse-resize}
-.tr{right:-10px;top:-10px;cursor:nesw-resize}
-.bl{left:-10px;bottom:-10px;cursor:nesw-resize}
-.br{right:-10px;bottom:-10px;cursor:nwse-resize}
+.tl{
+    left:-10px;
+    top:-10px;
+    cursor:nwse-resize;
+}
+
+.tr{
+    right:-10px;
+    top:-10px;
+    cursor:nesw-resize;
+}
+
+.bl{
+    left:-10px;
+    bottom:-10px;
+    cursor:nesw-resize;
+}
+
+.br{
+    right:-10px;
+    bottom:-10px;
+    cursor:nwse-resize;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
 
 .preset-buttons,
 .filter-buttons,
@@ -211,6 +251,14 @@ button{
     border:none;
 }
 
+.green:hover{
+    background:#24543f;
+}
+
+/* --------------------------------------------------
+   CONTROLS
+-------------------------------------------------- */
+
 .controls{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -227,6 +275,10 @@ button{
 input[type=range]{
     width:100%;
 }
+
+/* --------------------------------------------------
+   PREVIEW
+-------------------------------------------------- */
 
 .preview-wrap{
     margin-top:25px;
@@ -250,6 +302,10 @@ input[type=range]{
     gap:10px;
     margin-top:18px;
 }
+
+/* --------------------------------------------------
+   PAGES
+-------------------------------------------------- */
 
 .pages{
     display:flex;
@@ -299,6 +355,10 @@ input[type=range]{
     cursor:pointer;
 }
 
+/* --------------------------------------------------
+   STATUS
+-------------------------------------------------- */
+
 .status{
     margin-top:15px;
     padding:12px;
@@ -307,11 +367,47 @@ input[type=range]{
     color:#555;
 }
 
+/* --------------------------------------------------
+   FILTER INFORMATION
+-------------------------------------------------- */
+
+.filter-info{
+    margin-top:20px;
+}
+
+.filter-info dt{
+    font-weight:bold;
+    font-size:1.05rem;
+    margin-top:20px;
+    padding:12px 15px;
+    background:#f1f1f1;
+    border-left:5px solid #111;
+    border-radius:6px;
+}
+
+.filter-info dt:first-child{
+    margin-top:0;
+}
+
+.filter-info dd{
+    color:#555;
+    line-height:1.7;
+    padding:12px 15px 5px 20px;
+}
+
+/* --------------------------------------------------
+   EMPTY
+-------------------------------------------------- */
+
 .empty{
     text-align:center;
     padding:50px 20px;
     color:#777;
 }
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
 
 footer{
     background:#111;
@@ -330,7 +426,12 @@ footer p{
     color:#aaa;
 }
 
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
 @media(max-width:700px){
+
     .upload-options{
         grid-template-columns:1fr;
     }
@@ -346,936 +447,2216 @@ footer p{
     header h1{
         font-size:1.45rem;
     }
+
+    .scan-actions{
+        flex-direction:column;
+    }
+
+    .scan-actions .tool-btn{
+        width:100%;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+<!-- ==================================================
+     HEADER
+================================================== -->
+
 <header>
+
     <h1>Izandla Zagezana</h1>
-    <p>Simple • Private • Community Document Scanner</p>
+
+    <p>
+        Simple • Private • Community Document Scanner
+    </p>
+
 </header>
+
 
 <div class="container">
 
-    <!-- UPLOAD -->
-    <section class="card">
-        <h2>📄 Scan Your Document</h2>
-        <p class="subtitle">
-            Choose a photo from your device, select a file, or take a new picture.
-        </p>
 
-        <div class="upload-options">
+<!-- ==================================================
+     UPLOAD SECTION
+================================================== -->
 
-            <label class="upload-btn" for="cameraInput">
-                <span class="icon">📷</span>
-                <strong>Take Photo</strong>
-                <small>Use your camera</small>
+<section class="card">
+
+    <h2>📄 Scan Your Document</h2>
+
+    <p class="subtitle">
+
+        Choose a photo from your device, select a file,
+        or take a new picture.
+
+    </p>
+
+
+    <div class="upload-options">
+
+
+        <!-- CAMERA -->
+
+        <label class="upload-btn"
+               for="cameraInput">
+
+            <span class="icon">📷</span>
+
+            <strong>Take Photo</strong>
+
+            <small>
+                Use your camera
+            </small>
+
+        </label>
+
+
+        <!-- GALLERY -->
+
+        <label class="upload-btn"
+               for="galleryInput">
+
+            <span class="icon">🖼️</span>
+
+            <strong>Gallery / Photos</strong>
+
+            <small>
+                Choose an existing photo
+            </small>
+
+        </label>
+
+
+        <!-- FILE -->
+
+        <label class="upload-btn"
+               for="fileInput">
+
+            <span class="icon">📁</span>
+
+            <strong>Choose File</strong>
+
+            <small>
+                Select from your files
+            </small>
+
+        </label>
+
+    </div>
+
+
+    <input
+        type="file"
+        id="cameraInput"
+        accept="image/*"
+        capture="environment"
+    >
+
+
+    <input
+        type="file"
+        id="galleryInput"
+        accept="image/*"
+    >
+
+
+    <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+    >
+
+
+    <div
+        id="uploadStatus"
+        class="status hidden">
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CROP SECTION
+================================================== -->
+
+<section
+    id="cropSection"
+    class="card hidden">
+
+
+    <h2>✂️ Crop Your Document</h2>
+
+
+    <p class="subtitle">
+
+        Drag the box around the exact document area.
+        Only the selected area will be scanned.
+
+    </p>
+
+
+    <div class="preset-buttons">
+
+
+        <button
+            class="tool-btn active"
+            onclick="setCropPreset('free',this)">
+
+            Free Crop
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="setCropPreset('a4',this)">
+
+            A4
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="setCropPreset('id',this)">
+
+            ID / Passport
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="resetCrop()">
+
+            Reset
+
+        </button>
+
+
+    </div>
+
+
+    <div
+        class="image-area"
+        id="imageArea">
+
+
+        <img
+            id="sourceImage"
+            alt="Document to crop">
+
+
+        <div
+            id="cropBox"
+            class="crop-box">
+
+
+            <div
+                class="crop-handle tl">
+            </div>
+
+
+            <div
+                class="crop-handle tr">
+            </div>
+
+
+            <div
+                class="crop-handle bl">
+            </div>
+
+
+            <div
+                class="crop-handle br">
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="action-buttons">
+
+
+        <button
+            class="tool-btn primary"
+            onclick="processCrop()">
+
+            ✨ Crop & Continue
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCANNER SETTINGS
+================================================== -->
+
+<section
+    id="scannerSection"
+    class="card hidden">
+
+
+    <h2>🖨️ Scanner Settings</h2>
+
+
+    <p class="subtitle">
+
+        Make your document look like a clean scanned document.
+
+    </p>
+
+
+    <!-- FILTER BUTTONS -->
+
+    <div class="filter-buttons">
+
+
+        <button
+            class="tool-btn active"
+            onclick="setFilter('bw',this)">
+
+            ⚫ Black & White
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="setFilter('gray',this)">
+
+            ◼ Grayscale
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="setFilter('clean',this)">
+
+            ✨ Clean Scan
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="setFilter('original',this)">
+
+            🖼️ Original
+
+        </button>
+
+
+    </div>
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls">
+
+
+        <div class="control">
+
+            <label>
+                Brightness
             </label>
 
-            <label class="upload-btn" for="galleryInput">
-                <span class="icon">🖼️</span>
-                <strong>Gallery / Photos</strong>
-                <small>Choose an existing photo</small>
+            <input
+                type="range"
+                id="brightness"
+                min="-100"
+                max="100"
+                value="0"
+                oninput="renderScan()">
+
+        </div>
+
+
+        <div class="control">
+
+            <label>
+                Contrast
             </label>
 
-            <label class="upload-btn" for="fileInput">
-                <span class="icon">📁</span>
-                <strong>Choose File</strong>
-                <small>Select from your files</small>
+            <input
+                type="range"
+                id="contrast"
+                min="-100"
+                max="100"
+                value="20"
+                oninput="renderScan()">
+
+        </div>
+
+
+        <div class="control">
+
+            <label>
+                Black & White Threshold
             </label>
 
+            <input
+                type="range"
+                id="threshold"
+                min="50"
+                max="240"
+                value="165"
+                oninput="renderScan()">
+
         </div>
 
-        <input
-            type="file"
-            id="cameraInput"
-            accept="image/*"
-            capture="environment"
-        >
 
-        <input
-            type="file"
-            id="galleryInput"
-            accept="image/*"
-        >
-
-        <input
-            type="file"
-            id="fileInput"
-            accept="image/*"
-        >
-
-        <div id="uploadStatus" class="status hidden"></div>
-    </section>
+    </div>
 
 
-    <!-- CROP -->
-    <section id="cropSection" class="card hidden">
+    <!-- PREVIEW -->
 
-        <h2>✂️ Crop Your Document</h2>
+    <div class="preview-wrap">
 
-        <p class="subtitle">
-            Drag the box around the exact document area. Only the selected area will be scanned.
+
+        <canvas
+            id="previewCanvas">
+        </canvas>
+
+
+        <div class="scan-actions">
+
+
+            <button
+                class="tool-btn green"
+                onclick="downloadPNG()">
+
+                ⬇️ Download PNG
+
+            </button>
+
+
+            <button
+                class="tool-btn"
+                onclick="downloadJPG()">
+
+                ⬇️ Download JPG
+
+            </button>
+
+
+            <button
+                class="tool-btn primary"
+                onclick="downloadPDF()">
+
+                📕 Download PDF
+
+            </button>
+
+
+            <button
+                class="tool-btn"
+                onclick="addPage()">
+
+                ➕ Add Page
+
+            </button>
+
+
+            <button
+                class="tool-btn"
+                onclick="startNewScan()">
+
+                📷 Scan Another
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FILTER INFORMATION
+================================================== -->
+
+<section class="card">
+
+
+    <h2>🎨 Document Scan Filters</h2>
+
+
+    <p class="subtitle">
+
+        Learn what each scanning mode does and choose
+        the best option for your document.
+
+    </p>
+
+
+    <dl class="filter-info">
+
+
+        <dt>
+            Original / None
+        </dt>
+
+        <dd>
+
+            Keeps the image exactly as captured by the
+            camera sensor without modifying colors,
+            brightness, or contrast. Ideal for preserving
+            the exact state or flaws of a document.
+
+        </dd>
+
+
+        <dt>
+            Color Document / Magic Color
+        </dt>
+
+        <dd>
+
+            Automatically detects the background paper
+            and whitens it while boosting the saturation
+            and contrast of text, logos, stamps, and
+            signatures. This is a strong general-purpose
+            option for modern document scanning.
+
+        </dd>
+
+
+        <dt>
+            Binarization / Black and White (B&amp;W)
+        </dt>
+
+        <dd>
+
+            Converts every pixel into pure black or pure
+            white based on a threshold. It removes much
+            of the gray background and produces
+            high-contrast text with a relatively small
+            file size.
+
+        </dd>
+
+
+        <dt>
+            Grayscale
+        </dt>
+
+        <dd>
+
+            Removes color information and converts the
+            document into shades of gray. It is useful
+            for handwritten notes, pencil sketches,
+            old documents, and materials where a strict
+            black-and-white threshold could remove
+            fine details.
+
+        </dd>
+
+
+        <dt>
+            Shadow Removal / Flattening
+        </dt>
+
+        <dd>
+
+            Reduces uneven lighting and shadows across
+            the page. This can help clean up shadows
+            caused by hands, phones, edges of the
+            document, or overhead lighting while keeping
+            important text and details visible.
+
+        </dd>
+
+
+        <dt>
+            Photo / High Definition (HD)
+        </dt>
+
+        <dd>
+
+            Preserves richer colors, gradients, and
+            image detail while making moderate brightness
+            and contrast adjustments. It is suitable for
+            documents containing photographs, illustrations,
+            glossy pages, or other detailed imagery.
+
+        </dd>
+
+
+        <dt>
+            Clean Scan
+        </dt>
+
+        <dd>
+
+            Converts the document toward a cleaner
+            grayscale appearance and brightens very
+            light areas. It is useful when you want a
+            simple, readable document without completely
+            removing intermediate shades.
+
+        </dd>
+
+
+    </dl>
+
+</section>
+
+
+
+<!-- ==================================================
+     MULTI PAGE SECTION
+================================================== -->
+
+<section
+    id="pagesSection"
+    class="card hidden">
+
+
+    <h2>📚 Scanned Pages</h2>
+
+
+    <p class="subtitle">
+
+        Add multiple pages and create one PDF document.
+
+    </p>
+
+
+    <div
+        id="pages"
+        class="pages">
+    </div>
+
+
+    <div class="action-buttons">
+
+
+        <button
+            class="tool-btn primary"
+            onclick="downloadPDF()">
+
+            📕 Download Multi-Page PDF
+
+        </button>
+
+
+        <button
+            class="tool-btn"
+            onclick="clearPages()">
+
+            🗑️ Clear Pages
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PRIVACY INFORMATION
+================================================== -->
+
+<section class="card">
+
+
+    <div class="empty">
+
+
+        <h2>🔒 Your Documents</h2>
+
+
+        <p>
+
+            This scanner processes your images directly
+            in your browser. Your document does not need
+            to be uploaded to a server for the scanning
+            effects.
+
         </p>
 
-        <div class="preset-buttons">
-            <button class="tool-btn active" onclick="setCropPreset('free')">
-                Free Crop
-            </button>
 
-            <button class="tool-btn" onclick="setCropPreset('a4')">
-                A4
-            </button>
+    </div>
 
-            <button class="tool-btn" onclick="setCropPreset('id')">
-                ID / Passport
-            </button>
+</section>
 
-            <button class="tool-btn" onclick="resetCrop()">
-                Reset
-            </button>
-        </div>
-
-        <div class="image-area" id="imageArea">
-
-            <img id="sourceImage" alt="Document to crop">
-
-            <div id="cropBox" class="crop-box">
-                <div class="crop-handle tl"></div>
-                <div class="crop-handle tr"></div>
-                <div class="crop-handle bl"></div>
-                <div class="crop-handle br"></div>
-            </div>
-
-        </div>
-
-        <div class="action-buttons">
-            <button class="tool-btn primary" onclick="processCrop()">
-                ✨ Crop & Continue
-            </button>
-        </div>
-
-    </section>
-
-
-    <!-- SCANNER -->
-    <section id="scannerSection" class="card hidden">
-
-        <h2>🖨️ Scanner Settings</h2>
-
-        <p class="subtitle">
-            Make your document look like a clean scanned document.
-        </p>
-
-        <div class="filter-buttons">
-
-            <button class="tool-btn active" onclick="setFilter('bw',this)">
-                ⚫ Black & White
-            </button>
-
-            <button class="tool-btn" onclick="setFilter('gray',this)">
-                ◼ Grayscale
-            </button>
-
-            <button class="tool-btn" onclick="setFilter('clean',this)">
-                ✨ Clean Scan
-            </button>
-
-            <button class="tool-btn" onclick="setFilter('original',this)">
-                🖼️ Original
-            </button>
-
-        </div>
-
-        <div class="controls">
-
-            <div class="control">
-                <label>Brightness</label>
-                <input
-                    type="range"
-                    id="brightness"
-                    min="-100"
-                    max="100"
-                    value="0"
-                    oninput="renderScan()"
-                >
-            </div>
-
-            <div class="control">
-                <label>Contrast</label>
-                <input
-                    type="range"
-                    id="contrast"
-                    min="-100"
-                    max="100"
-                    value="20"
-                    oninput="renderScan()"
-                >
-            </div>
-
-            <div class="control">
-                <label>Black & White Threshold</label>
-                <input
-                    type="range"
-                    id="threshold"
-                    min="50"
-                    max="240"
-                    value="165"
-                    oninput="renderScan()"
-                >
-            </div>
-
-        </div>
-
-        <div class="preview-wrap">
-            <canvas id="previewCanvas"></canvas>
-
-            <div class="scan-actions">
-                <button class="tool-btn green" onclick="downloadPNG()">
-                    ⬇️ Download PNG
-                </button>
-
-                <button class="tool-btn primary" onclick="downloadJPG()">
-                    ⬇️ Download JPG
-                </button>
-
-                <button class="tool-btn" onclick="addPage()">
-                    ➕ Add Page
-                </button>
-
-                <button class="tool-btn" onclick="startNewScan()">
-                    📷 Scan Another
-                </button>
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- MULTI PAGE -->
-    <section id="pagesSection" class="card hidden">
-
-        <h2>📚 Scanned Pages</h2>
-
-        <p class="subtitle">
-            Add multiple pages and create one PDF document.
-        </p>
-
-        <div id="pages" class="pages"></div>
-
-        <div class="action-buttons">
-            <button class="tool-btn primary" onclick="downloadPDF()">
-                📕 Download Multi-Page PDF
-            </button>
-
-            <button class="tool-btn" onclick="clearPages()">
-                🗑️ Clear Pages
-            </button>
-        </div>
-
-    </section>
-
-
-    <!-- INFORMATION -->
-    <section class="card">
-        <div class="empty">
-            <h2>🔒 Your Documents</h2>
-            <p>
-                This scanner processes your images directly in your browser.
-                Your document does not need to be uploaded to a server for the
-                scanning effects.
-            </p>
-        </div>
-    </section>
 
 </div>
 
 
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
 <footer>
-    <strong>Izandla Zagezana</strong>
-    <p>Together we fight unemployment. Together we build opportunity.</p>
+
+
+    <strong>
+        Izandla Zagezana
+    </strong>
+
+
+    <p>
+        Together we fight unemployment.
+        Together we build opportunity.
+    </p>
+
+
 </footer>
 
 
+
 <script>
+
+/* ==================================================
+   GLOBAL VARIABLES
+================================================== */
+
 let originalImage = new Image();
+
 let croppedCanvas = null;
+
 let currentFilter = "bw";
+
 let pages = [];
 
+
 let crop = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0
+
+    x:0,
+    y:0,
+    width:0,
+    height:0
+
 };
+
 
 let imageDisplay = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0
+
+    x:0,
+    y:0,
+    width:0,
+    height:0
+
 };
 
-const sourceImage = document.getElementById("sourceImage");
-const imageArea = document.getElementById("imageArea");
-const cropBox = document.getElementById("cropBox");
-const cropSection = document.getElementById("cropSection");
-const scannerSection = document.getElementById("scannerSection");
-const pagesSection = document.getElementById("pagesSection");
 
 
-// --------------------------------------------------
-// FILE INPUTS
-// --------------------------------------------------
+/* ==================================================
+   DOM ELEMENTS
+================================================== */
 
-document.getElementById("cameraInput").addEventListener("change", handleFile);
-document.getElementById("galleryInput").addEventListener("change", handleFile);
-document.getElementById("fileInput").addEventListener("change", handleFile);
+const sourceImage =
+    document.getElementById("sourceImage");
+
+const imageArea =
+    document.getElementById("imageArea");
+
+const cropBox =
+    document.getElementById("cropBox");
+
+const cropSection =
+    document.getElementById("cropSection");
+
+const scannerSection =
+    document.getElementById("scannerSection");
+
+const pagesSection =
+    document.getElementById("pagesSection");
+
+
+
+/* ==================================================
+   FILE INPUTS
+================================================== */
+
+document
+    .getElementById("cameraInput")
+    .addEventListener("change",handleFile);
+
+document
+    .getElementById("galleryInput")
+    .addEventListener("change",handleFile);
+
+document
+    .getElementById("fileInput")
+    .addEventListener("change",handleFile);
+
+
 
 function handleFile(event){
 
-    const file = event.target.files[0];
+    const file =
+        event.target.files[0];
 
-    if(!file) return;
 
-    if(!file.type.startsWith("image/")){
-        alert("Please select an image.");
+    if(!file){
+
         return;
+
     }
 
-    const reader = new FileReader();
 
-    reader.onload = function(e){
+    if(!file.type.startsWith("image/")){
 
-        originalImage = new Image();
+        alert("Please select an image.");
 
-        originalImage.onload = function(){
+        return;
 
-            sourceImage.src = e.target.result;
+    }
 
-            cropSection.classList.remove("hidden");
 
-            scannerSection.classList.add("hidden");
+    const reader =
+        new FileReader();
 
-            setTimeout(initializeCrop,100);
 
-            document.getElementById("uploadStatus").textContent =
+    reader.onload=function(e){
+
+
+        originalImage =
+            new Image();
+
+
+        originalImage.onload=function(){
+
+
+            sourceImage.src =
+                e.target.result;
+
+
+            cropSection
+                .classList
+                .remove("hidden");
+
+
+            scannerSection
+                .classList
+                .add("hidden");
+
+
+            setTimeout(
+                initializeCrop,
+                100
+            );
+
+
+            const status =
+                document.getElementById(
+                    "uploadStatus"
+                );
+
+
+            status.textContent =
                 "Image loaded. Crop the exact document area.";
 
-            document.getElementById("uploadStatus")
-                .classList.remove("hidden");
+
+            status.classList
+                .remove("hidden");
+
         };
 
-        originalImage.src = e.target.result;
+
+        originalImage.src =
+            e.target.result;
+
     };
+
 
     reader.readAsDataURL(file);
 
+
     event.target.value = "";
+
 }
 
 
-// --------------------------------------------------
-// CROP INITIALIZATION
-// --------------------------------------------------
+
+/* ==================================================
+   CROP INITIALIZATION
+================================================== */
 
 function initializeCrop(){
 
-    const rect = sourceImage.getBoundingClientRect();
-    const areaRect = imageArea.getBoundingClientRect();
+    const rect =
+        sourceImage.getBoundingClientRect();
 
-    imageDisplay.x = rect.left - areaRect.left;
-    imageDisplay.y = rect.top - areaRect.top;
-    imageDisplay.width = rect.width;
-    imageDisplay.height = rect.height;
 
-    crop.x = imageDisplay.x + imageDisplay.width * .05;
-    crop.y = imageDisplay.y + imageDisplay.height * .05;
-    crop.width = imageDisplay.width * .90;
-    crop.height = imageDisplay.height * .90;
+    const areaRect =
+        imageArea.getBoundingClientRect();
+
+
+    imageDisplay.x =
+        rect.left - areaRect.left;
+
+
+    imageDisplay.y =
+        rect.top - areaRect.top;
+
+
+    imageDisplay.width =
+        rect.width;
+
+
+    imageDisplay.height =
+        rect.height;
+
+
+    crop.x =
+        imageDisplay.x +
+        imageDisplay.width * .05;
+
+
+    crop.y =
+        imageDisplay.y +
+        imageDisplay.height * .05;
+
+
+    crop.width =
+        imageDisplay.width * .90;
+
+
+    crop.height =
+        imageDisplay.height * .90;
+
 
     updateCropBox();
+
 }
 
+
+
+/* ==================================================
+   UPDATE CROP BOX
+================================================== */
 
 function updateCropBox(){
 
-    cropBox.style.left = crop.x + "px";
-    cropBox.style.top = crop.y + "px";
-    cropBox.style.width = crop.width + "px";
-    cropBox.style.height = crop.height + "px";
+    cropBox.style.left =
+        crop.x + "px";
+
+
+    cropBox.style.top =
+        crop.y + "px";
+
+
+    cropBox.style.width =
+        crop.width + "px";
+
+
+    cropBox.style.height =
+        crop.height + "px";
+
 }
 
 
-// --------------------------------------------------
-// CROP PRESETS
-// --------------------------------------------------
 
-function setCropPreset(type){
+/* ==================================================
+   CROP PRESETS
+================================================== */
 
-    if(!imageDisplay.width) return;
+function setCropPreset(type,button){
 
-    document.querySelectorAll(".preset-buttons .tool-btn")
-        .forEach(b => b.classList.remove("active"));
+    if(!imageDisplay.width){
 
-    event.target.classList.add("active");
+        return;
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".preset-buttons .tool-btn"
+        )
+        .forEach(
+            b => b.classList.remove("active")
+        );
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
 
     let ratio;
 
+
     if(type === "a4"){
+
         ratio = 210 / 297;
+
     }
+
     else if(type === "id"){
+
         ratio = 85.6 / 53.98;
+
     }
+
     else{
+
         resetCrop();
+
         return;
+
     }
 
-    let width = imageDisplay.width * .85;
-    let height = width / ratio;
 
-    if(height > imageDisplay.height * .85){
-        height = imageDisplay.height * .85;
-        width = height * ratio;
+    let width =
+        imageDisplay.width * .85;
+
+
+    let height =
+        width / ratio;
+
+
+    if(height >
+       imageDisplay.height * .85){
+
+        height =
+            imageDisplay.height * .85;
+
+
+        width =
+            height * ratio;
+
     }
 
-    crop.width = width;
-    crop.height = height;
 
-    crop.x = imageDisplay.x + (imageDisplay.width-width)/2;
-    crop.y = imageDisplay.y + (imageDisplay.height-height)/2;
+    crop.width =
+        width;
+
+
+    crop.height =
+        height;
+
+
+    crop.x =
+        imageDisplay.x +
+        (imageDisplay.width - width) / 2;
+
+
+    crop.y =
+        imageDisplay.y +
+        (imageDisplay.height - height) / 2;
+
 
     updateCropBox();
+
 }
 
+
+
+/* ==================================================
+   RESET CROP
+================================================== */
 
 function resetCrop(){
 
-    crop.x = imageDisplay.x + imageDisplay.width*.05;
-    crop.y = imageDisplay.y + imageDisplay.height*.05;
-    crop.width = imageDisplay.width*.90;
-    crop.height = imageDisplay.height*.90;
+    crop.x =
+        imageDisplay.x +
+        imageDisplay.width * .05;
+
+
+    crop.y =
+        imageDisplay.y +
+        imageDisplay.height * .05;
+
+
+    crop.width =
+        imageDisplay.width * .90;
+
+
+    crop.height =
+        imageDisplay.height * .90;
+
 
     updateCropBox();
+
 }
 
 
-// --------------------------------------------------
-// CROP DRAGGING
-// --------------------------------------------------
+
+/* ==================================================
+   CROP DRAGGING
+================================================== */
 
 let dragMode = null;
+
 let startX = 0;
+
 let startY = 0;
+
 let startCrop = null;
 
-cropBox.addEventListener("pointerdown", function(e){
-
-    e.preventDefault();
-
-    const target = e.target;
-
-    if(target.classList.contains("crop-handle")){
-        dragMode = target.classList.contains("tl") ? "tl" :
-                   target.classList.contains("tr") ? "tr" :
-                   target.classList.contains("bl") ? "bl" : "br";
-    }
-    else{
-        dragMode = "move";
-    }
-
-    startX = e.clientX;
-    startY = e.clientY;
-
-    startCrop = {...crop};
-
-    cropBox.setPointerCapture(e.pointerId);
-});
 
 
-cropBox.addEventListener("pointermove", function(e){
+cropBox.addEventListener(
+    "pointerdown",
+    function(e){
 
-    if(!dragMode) return;
+        e.preventDefault();
 
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
 
-    if(dragMode === "move"){
+        const target =
+            e.target;
 
-        crop.x = startCrop.x + dx;
-        crop.y = startCrop.y + dy;
 
-        crop.x = Math.max(imageDisplay.x,
-            Math.min(crop.x,imageDisplay.x+imageDisplay.width-crop.width));
+        if(
+            target.classList
+                .contains("crop-handle")
+        ){
 
-        crop.y = Math.max(imageDisplay.y,
-            Math.min(crop.y,imageDisplay.y+imageDisplay.height-crop.height));
-    }
+            dragMode =
+                target.classList
+                    .contains("tl")
+                    ? "tl"
+                    :
+                target.classList
+                    .contains("tr")
+                    ? "tr"
+                    :
+                target.classList
+                    .contains("bl")
+                    ? "bl"
+                    :
+                    "br";
 
-    else{
-
-        let left = startCrop.x;
-        let top = startCrop.y;
-        let right = startCrop.x + startCrop.width;
-        let bottom = startCrop.y + startCrop.height;
-
-        if(dragMode.includes("l")) left += dx;
-        if(dragMode.includes("r")) right += dx;
-        if(dragMode.includes("t")) top += dy;
-        if(dragMode.includes("b")) bottom += dy;
-
-        left = Math.max(imageDisplay.x,left);
-        top = Math.max(imageDisplay.y,top);
-
-        right = Math.min(
-            imageDisplay.x+imageDisplay.width,
-            right
-        );
-
-        bottom = Math.min(
-            imageDisplay.y+imageDisplay.height,
-            bottom
-        );
-
-        if(right-left >= 60 && bottom-top >= 60){
-
-            crop.x = left;
-            crop.y = top;
-            crop.width = right-left;
-            crop.height = bottom-top;
         }
+
+        else{
+
+            dragMode = "move";
+
+        }
+
+
+        startX =
+            e.clientX;
+
+
+        startY =
+            e.clientY;
+
+
+        startCrop =
+            {...crop};
+
+
+        cropBox.setPointerCapture(
+            e.pointerId
+        );
+
     }
-
-    updateCropBox();
-});
+);
 
 
-cropBox.addEventListener("pointerup",function(){
-    dragMode = null;
-});
+
+cropBox.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(!dragMode){
+
+            return;
+
+        }
 
 
-// --------------------------------------------------
-// PROCESS CROP
-// --------------------------------------------------
+        const dx =
+            e.clientX - startX;
+
+
+        const dy =
+            e.clientY - startY;
+
+
+        /* MOVE */
+
+        if(dragMode === "move"){
+
+            crop.x =
+                startCrop.x + dx;
+
+
+            crop.y =
+                startCrop.y + dy;
+
+
+            crop.x =
+                Math.max(
+                    imageDisplay.x,
+                    Math.min(
+                        crop.x,
+                        imageDisplay.x +
+                        imageDisplay.width -
+                        crop.width
+                    )
+                );
+
+
+            crop.y =
+                Math.max(
+                    imageDisplay.y,
+                    Math.min(
+                        crop.y,
+                        imageDisplay.y +
+                        imageDisplay.height -
+                        crop.height
+                    )
+                );
+
+        }
+
+
+        /* RESIZE */
+
+        else{
+
+            let left =
+                startCrop.x;
+
+
+            let top =
+                startCrop.y;
+
+
+            let right =
+                startCrop.x +
+                startCrop.width;
+
+
+            let bottom =
+                startCrop.y +
+                startCrop.height;
+
+
+            if(dragMode.includes("l")){
+
+                left += dx;
+
+            }
+
+
+            if(dragMode.includes("r")){
+
+                right += dx;
+
+            }
+
+
+            if(dragMode.includes("t")){
+
+                top += dy;
+
+            }
+
+
+            if(dragMode.includes("b")){
+
+                bottom += dy;
+
+            }
+
+
+            left =
+                Math.max(
+                    imageDisplay.x,
+                    left
+                );
+
+
+            top =
+                Math.max(
+                    imageDisplay.y,
+                    top
+                );
+
+
+            right =
+                Math.min(
+                    imageDisplay.x +
+                    imageDisplay.width,
+                    right
+                );
+
+
+            bottom =
+                Math.min(
+                    imageDisplay.y +
+                    imageDisplay.height,
+                    bottom
+                );
+
+
+            if(
+                right-left >= 60 &&
+                bottom-top >= 60
+            ){
+
+                crop.x =
+                    left;
+
+
+                crop.y =
+                    top;
+
+
+                crop.width =
+                    right-left;
+
+
+                crop.height =
+                    bottom-top;
+
+            }
+
+        }
+
+
+        updateCropBox();
+
+    }
+);
+
+
+
+cropBox.addEventListener(
+    "pointerup",
+    function(){
+
+        dragMode = null;
+
+    }
+);
+
+
+
+/* ==================================================
+   PROCESS CROP
+================================================== */
 
 function processCrop(){
 
-    if(!originalImage.src) return;
+    if(!originalImage.src){
 
-    const scaleX = originalImage.naturalWidth / imageDisplay.width;
-    const scaleY = originalImage.naturalHeight / imageDisplay.height;
+        return;
 
-    const sx = (crop.x-imageDisplay.x)*scaleX;
-    const sy = (crop.y-imageDisplay.y)*scaleY;
+    }
 
-    const sw = crop.width*scaleX;
-    const sh = crop.height*scaleY;
 
-    croppedCanvas = document.createElement("canvas");
+    const scaleX =
+        originalImage.naturalWidth /
+        imageDisplay.width;
 
-    croppedCanvas.width = Math.round(sw);
-    croppedCanvas.height = Math.round(sh);
 
-    const ctx = croppedCanvas.getContext("2d");
+    const scaleY =
+        originalImage.naturalHeight /
+        imageDisplay.height;
+
+
+    const sx =
+        (crop.x - imageDisplay.x) *
+        scaleX;
+
+
+    const sy =
+        (crop.y - imageDisplay.y) *
+        scaleY;
+
+
+    const sw =
+        crop.width *
+        scaleX;
+
+
+    const sh =
+        crop.height *
+        scaleY;
+
+
+    croppedCanvas =
+        document.createElement("canvas");
+
+
+    croppedCanvas.width =
+        Math.round(sw);
+
+
+    croppedCanvas.height =
+        Math.round(sh);
+
+
+    const ctx =
+        croppedCanvas.getContext("2d");
+
 
     ctx.drawImage(
+
         originalImage,
+
         sx,
         sy,
         sw,
         sh,
+
         0,
         0,
         croppedCanvas.width,
         croppedCanvas.height
+
     );
 
-    scannerSection.classList.remove("hidden");
+
+    scannerSection
+        .classList
+        .remove("hidden");
+
 
     renderScan();
 
+
     scannerSection.scrollIntoView({
+
         behavior:"smooth"
+
     });
+
 }
 
 
-// --------------------------------------------------
-// FILTER
-// --------------------------------------------------
+
+/* ==================================================
+   FILTER
+================================================== */
 
 function setFilter(filter,button){
 
-    currentFilter = filter;
+    currentFilter =
+        filter;
 
-    document.querySelectorAll(".filter-buttons .tool-btn")
-        .forEach(b=>b.classList.remove("active"));
 
-    button.classList.add("active");
+    document
+        .querySelectorAll(
+            ".filter-buttons .tool-btn"
+        )
+        .forEach(
+            b => b.classList.remove("active")
+        );
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
 
     renderScan();
+
 }
 
 
+
+/* ==================================================
+   RENDER SCAN
+================================================== */
+
 function renderScan(){
 
-    if(!croppedCanvas) return;
+    if(!croppedCanvas){
 
-    const canvas = document.getElementById("previewCanvas");
-
-    canvas.width = croppedCanvas.width;
-    canvas.height = croppedCanvas.height;
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.drawImage(croppedCanvas,0,0);
-
-    if(currentFilter === "original"){
         return;
+
     }
 
-    let imageData = ctx.getImageData(
+
+    const canvas =
+        document.getElementById(
+            "previewCanvas"
+        );
+
+
+    canvas.width =
+        croppedCanvas.width;
+
+
+    canvas.height =
+        croppedCanvas.height;
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    ctx.drawImage(
+        croppedCanvas,
         0,
-        0,
-        canvas.width,
-        canvas.height
+        0
     );
 
-    const data = imageData.data;
+
+    if(currentFilter === "original"){
+
+        return;
+
+    }
+
+
+    let imageData =
+        ctx.getImageData(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+    const data =
+        imageData.data;
+
 
     const brightness =
-        Number(document.getElementById("brightness").value);
+        Number(
+            document.getElementById(
+                "brightness"
+            ).value
+        );
+
 
     const contrast =
-        Number(document.getElementById("contrast").value);
+        Number(
+            document.getElementById(
+                "contrast"
+            ).value
+        );
+
 
     const threshold =
-        Number(document.getElementById("threshold").value);
+        Number(
+            document.getElementById(
+                "threshold"
+            ).value
+        );
+
 
     const factor =
-        (259*(contrast+255))/(255*(259-contrast));
+        (259 * (contrast + 255)) /
+        (255 * (259 - contrast));
 
-    for(let i=0;i<data.length;i+=4){
 
-        let r=data[i];
-        let g=data[i+1];
-        let b=data[i+2];
+    for(
+        let i=0;
+        i<data.length;
+        i+=4
+    ){
+
+        let r =
+            data[i];
+
+
+        let g =
+            data[i+1];
+
+
+        let b =
+            data[i+2];
+
 
         let gray =
-            0.299*r+
-            0.587*g+
+            0.299*r +
+            0.587*g +
             0.114*b;
 
-        if(currentFilter === "gray" ||
-           currentFilter === "clean"){
 
-            r=gray;
-            g=gray;
-            b=gray;
+        /* GRAYSCALE */
+
+        if(
+            currentFilter === "gray" ||
+            currentFilter === "clean"
+        ){
+
+            r = gray;
+            g = gray;
+            b = gray;
+
         }
+
+
+        /* BLACK AND WHITE */
 
         if(currentFilter === "bw"){
 
             let adjusted =
-                factor*(gray-128)+128+brightness;
+                factor *
+                (gray - 128) +
+                128 +
+                brightness;
+
 
             let value =
-                adjusted > threshold ? 255 : 0;
+                adjusted > threshold
+                ? 255
+                : 0;
 
-            r=value;
-            g=value;
-            b=value;
+
+            r = value;
+            g = value;
+            b = value;
+
         }
+
+
+        /* OTHER FILTERS */
+
         else{
 
-            r = factor*(r-128)+128+brightness;
-            g = factor*(g-128)+128+brightness;
-            b = factor*(b-128)+128+brightness;
+            r =
+                factor *
+                (r - 128) +
+                128 +
+                brightness;
+
+
+            g =
+                factor *
+                (g - 128) +
+                128 +
+                brightness;
+
+
+            b =
+                factor *
+                (b - 128) +
+                128 +
+                brightness;
+
         }
+
+
+        /* CLEAN SCAN */
 
         if(currentFilter === "clean"){
 
-            r = r > 215 ? 255 : r;
-            g = g > 215 ? 255 : g;
-            b = b > 215 ? 255 : b;
+            r =
+                r > 215
+                ? 255
+                : r;
+
+
+            g =
+                g > 215
+                ? 255
+                : g;
+
+
+            b =
+                b > 215
+                ? 255
+                : b;
+
         }
 
-        data[i]=Math.max(0,Math.min(255,r));
-        data[i+1]=Math.max(0,Math.min(255,g));
-        data[i+2]=Math.max(0,Math.min(255,b));
+
+        data[i] =
+            Math.max(
+                0,
+                Math.min(255,r)
+            );
+
+
+        data[i+1] =
+            Math.max(
+                0,
+                Math.min(255,g)
+            );
+
+
+        data[i+2] =
+            Math.max(
+                0,
+                Math.min(255,b)
+            );
+
     }
 
-    ctx.putImageData(imageData,0,0);
+
+    ctx.putImageData(
+        imageData,
+        0,
+        0
+    );
+
 }
 
 
-// --------------------------------------------------
-// DOWNLOAD
-// --------------------------------------------------
+
+/* ==================================================
+   DOWNLOAD PNG
+================================================== */
 
 function downloadPNG(){
 
     const canvas =
-        document.getElementById("previewCanvas");
+        document.getElementById(
+            "previewCanvas"
+        );
 
-    const link=document.createElement("a");
 
-    link.download="izandla-scanned-document.png";
+    if(!canvas.width){
 
-    link.href=canvas.toDataURL("image/png");
+        alert("Please scan a document first.");
+
+        return;
+
+    }
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.download =
+        "izandla-scanned-document.png";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
 
     link.click();
+
 }
 
+
+
+/* ==================================================
+   DOWNLOAD JPG
+================================================== */
 
 function downloadJPG(){
 
     const canvas =
-        document.getElementById("previewCanvas");
+        document.getElementById(
+            "previewCanvas"
+        );
 
-    const link=document.createElement("a");
 
-    link.download="izandla-scanned-document.jpg";
+    if(!canvas.width){
 
-    link.href=canvas.toDataURL("image/jpeg",.95);
+        alert("Please scan a document first.");
+
+        return;
+
+    }
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.download =
+        "izandla-scanned-document.jpg";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/jpeg",
+            .95
+        );
+
 
     link.click();
+
 }
 
 
-// --------------------------------------------------
-// ADD PAGE
-// --------------------------------------------------
+
+/* ==================================================
+   ADD PAGE
+================================================== */
 
 function addPage(){
 
     const canvas =
-        document.getElementById("previewCanvas");
+        document.getElementById(
+            "previewCanvas"
+        );
+
 
     if(!canvas.width){
-        alert("Please scan a document first.");
+
+        alert(
+            "Please scan a document first."
+        );
+
         return;
+
     }
 
-    pages.push(canvas.toDataURL("image/jpeg",.95));
+
+    pages.push(
+        canvas.toDataURL(
+            "image/jpeg",
+            .95
+        )
+    );
+
 
     renderPages();
 
-    pagesSection.classList.remove("hidden");
+
+    pagesSection
+        .classList
+        .remove("hidden");
+
 
     pagesSection.scrollIntoView({
+
         behavior:"smooth"
+
     });
+
 }
 
+
+
+/* ==================================================
+   RENDER PAGES
+================================================== */
 
 function renderPages(){
 
-    const container=document.getElementById("pages");
+    const container =
+        document.getElementById(
+            "pages"
+        );
 
-    container.innerHTML="";
 
-    pages.forEach((src,index)=>{
+    container.innerHTML = "";
 
-        const div=document.createElement("div");
 
-        div.className="page";
+    pages.forEach(
+        (src,index)=>{
 
-        div.innerHTML=`
-            <img src="${src}">
-            <span class="page-number">${index+1}</span>
-            <button class="remove-page"
-                onclick="removePage(${index})">
-                ×
-            </button>
-        `;
 
-        container.appendChild(div);
-    });
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "page";
+
+
+            div.innerHTML = `
+
+                <img src="${src}">
+
+                <span class="page-number">
+                    ${index+1}
+                </span>
+
+                <button
+                    class="remove-page"
+                    onclick="removePage(${index})">
+
+                    ×
+
+                </button>
+
+            `;
+
+
+            container.appendChild(div);
+
+        }
+    );
+
 }
 
+
+
+/* ==================================================
+   REMOVE PAGE
+================================================== */
 
 function removePage(index){
 
-    pages.splice(index,1);
+    pages.splice(
+        index,
+        1
+    );
+
 
     renderPages();
 
-    if(pages.length===0){
-        pagesSection.classList.add("hidden");
+
+    if(pages.length === 0){
+
+        pagesSection
+            .classList
+            .add("hidden");
+
     }
+
 }
 
+
+
+/* ==================================================
+   CLEAR PAGES
+================================================== */
 
 function clearPages(){
 
-    if(!confirm("Remove all scanned pages?")) return;
+    if(
+        !confirm(
+            "Remove all scanned pages?"
+        )
+    ){
 
-    pages=[];
+        return;
+
+    }
+
+
+    pages = [];
+
 
     renderPages();
 
-    pagesSection.classList.add("hidden");
+
+    pagesSection
+        .classList
+        .add("hidden");
+
 }
 
 
-// --------------------------------------------------
-// NEW SCAN
-// --------------------------------------------------
+
+/* ==================================================
+   NEW SCAN
+================================================== */
 
 function startNewScan(){
 
-    scannerSection.classList.add("hidden");
+    scannerSection
+        .classList
+        .add("hidden");
 
-    cropSection.classList.add("hidden");
 
-    document.getElementById("uploadStatus")
-        .classList.add("hidden");
+    cropSection
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById(
+            "uploadStatus"
+        )
+        .classList
+        .add("hidden");
+
 
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
+
 }
 
 
-// --------------------------------------------------
-// PDF GENERATOR
-// --------------------------------------------------
 
-function downloadPDF(){
+/* ==================================================
+   REAL PDF GENERATOR
+================================================== */
 
-    if(pages.length===0){
+async function downloadPDF(){
 
-        if(croppedCanvas){
-
-            const canvas =
-                document.getElementById("previewCanvas");
-
-            pages.push(
-                canvas.toDataURL("image/jpeg",.95)
-            );
-
-            renderPages();
-        }
-        else{
-            alert("Please scan at least one page.");
-            return;
-        }
-    }
-
-    const pdfParts=[];
-
-    pdfParts.push(
-        "%PDF-1.3\n"
-    );
-
-    let objects=[];
-
-    let pageObjects=[];
-    let imageObjects=[];
-
-    pages.forEach((src,index)=>{
-
-        const image=new Image();
-
-        image.src=src;
-
-        /*
-         * PDF creation is handled below through a simple
-         * browser-generated document structure.
-         */
-
-    });
 
     /*
-     * For broad browser compatibility, create a printable
-     * PDF through a temporary print window.
+     * If there are no pages yet,
+     * use the current preview as page 1.
      */
-    createPrintablePDF();
-}
+
+    if(pages.length === 0){
+
+        const canvas =
+            document.getElementById(
+                "previewCanvas"
+            );
 
 
-function createPrintablePDF(){
+        if(!canvas.width){
 
-    const printWindow=window.open("","_blank");
+            alert(
+                "Please scan at least one page first."
+            );
 
-    if(!printWindow){
-        alert("Please allow pop-ups to create the PDF.");
-        return;
+            return;
+
+        }
+
+
+        pages.push(
+            canvas.toDataURL(
+                "image/jpeg",
+                .95
+            )
+        );
+
+
+        renderPages();
+
+
+        pagesSection
+            .classList
+            .remove("hidden");
+
     }
 
-    let html=`
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <title>Izandla Zagezana Scanned Documents</title>
 
-        <style>
-        @page{
-            size:A4;
-            margin:0;
+    try{
+
+
+        /*
+         * Get jsPDF
+         */
+
+        const { jsPDF } =
+            window.jspdf;
+
+
+        /*
+         * Create A4 PDF
+         */
+
+        const pdf =
+            new jsPDF({
+
+                orientation:"portrait",
+
+                unit:"mm",
+
+                format:"a4",
+
+                compress:true
+
+            });
+
+
+        /*
+         * Add every scanned page
+         */
+
+        for(
+            let i=0;
+            i<pages.length;
+            i++
+        ){
+
+
+            /*
+             * Add another PDF page
+             * after the first one.
+             */
+
+            if(i > 0){
+
+                pdf.addPage();
+
+            }
+
+
+            const img =
+                new Image();
+
+
+            /*
+             * Wait until image loads
+             */
+
+            await new Promise(
+                (resolve,reject)=>{
+
+                    img.onload =
+                        resolve;
+
+                    img.onerror =
+                        reject;
+
+                    img.src =
+                        pages[i];
+
+                }
+            );
+
+
+            /*
+             * A4 dimensions
+             */
+
+            const pageWidth =
+                210;
+
+
+            const pageHeight =
+                297;
+
+
+            const margin =
+                5;
+
+
+            const maxWidth =
+                pageWidth -
+                margin * 2;
+
+
+            const maxHeight =
+                pageHeight -
+                margin * 2;
+
+
+            /*
+             * Preserve original
+             * document proportions.
+             */
+
+            const imageRatio =
+                img.width /
+                img.height;
+
+
+            let imgWidth =
+                maxWidth;
+
+
+            let imgHeight =
+                imgWidth /
+                imageRatio;
+
+
+            /*
+             * If too tall,
+             * fit to height.
+             */
+
+            if(
+                imgHeight >
+                maxHeight
+            ){
+
+                imgHeight =
+                    maxHeight;
+
+
+                imgWidth =
+                    imgHeight *
+                    imageRatio;
+
+            }
+
+
+            /*
+             * Center image
+             */
+
+            const x =
+                (pageWidth -
+                 imgWidth) / 2;
+
+
+            const y =
+                (pageHeight -
+                 imgHeight) / 2;
+
+
+            /*
+             * Add image to PDF
+             */
+
+            pdf.addImage(
+
+                pages[i],
+
+                "JPEG",
+
+                x,
+                y,
+
+                imgWidth,
+                imgHeight,
+
+                undefined,
+
+                "FAST"
+
+            );
+
         }
 
-        body{
-            margin:0;
-            background:white;
-        }
 
-        .page{
-            width:210mm;
-            min-height:297mm;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            page-break-after:always;
-            overflow:hidden;
-        }
+        /*
+         * Download the actual PDF.
+         */
 
-        img{
-            max-width:100%;
-            max-height:100%;
-            object-fit:contain;
-        }
-        </style>
+        pdf.save(
+            "izandla-zagezana-scanned-document.pdf"
+        );
 
-        </head>
-        <body>
-    `;
 
-    pages.forEach(src=>{
-        html += `
-            <div class="page">
-                <img src="${src}">
-            </div>
-        `;
-    });
+    }
 
-    html += `
-        </body>
-        </html>
-    `;
+    catch(error){
 
-    printWindow.document.open();
-    printWindow.document.write(html);
-    printWindow.document.close();
+        console.error(
+            "PDF Error:",
+            error
+        );
 
-    printWindow.onload=function(){
 
-        setTimeout(()=>{
-            printWindow.focus();
-            printWindow.print();
-        },500);
-    };
+        alert(
+            "Could not create the PDF. Please try again."
+        );
+
+    }
+
 }
 
 </script>
 
 </body>
-</html>
+
+    </html>
