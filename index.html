@@ -1,1810 +1,1197 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Prefino...Izandla Zagezana — Together We Fight Unemployment</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-STSY5P0WBX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-STSY5P0WBX');
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --terracotta: #C75B39;
-            --terracotta-light: #E07A5F;
-            --gold: #D4A843;
-            --gold-light: #F2CC8F;
-            --deep-green: #2D6A4F;
-            --forest: #1B4332;
-            --warm-cream: #FDF6E3;
-            --sand: #F5E6D3;
-            --charcoal: #1A1A2E;
-            --slate: #4A4E69;
-            --light-slate: #9A8C98;
-            --white: #FFFFFF;
-            --border: #E8E8EC;
-            --shadow: rgba(26, 26, 46, 0.08);
-            --shadow-lg: rgba(26, 26, 46, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--warm-cream);
-            color: var(--charcoal);
-            line-height: 1.6;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        .navbar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 20;
-
-            max-width: 1200px;
-            margin: auto;
-            padding: 24px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            color: var(--white);
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.45rem;
-            font-weight: 900;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 10px 14px;
-            border-radius: 10px;
-            transition: 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255,255,255,0.12);
-        }
-
-        .nav-links .nav-btn {
-            background: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .nav-links .nav-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 600px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(27,67,50,0.98),
-                    rgba(45,106,79,0.95) 50%,
-                    rgba(199,91,57,0.95)
-                );
-
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background-image:
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-
-            opacity: 0.8;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: auto;
-            padding: 150px 24px 100px;
-
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-
-            padding: 9px 18px;
-            border-radius: 50px;
-
-            font-size: 0.82rem;
-            letter-spacing: 0.5px;
-
-            margin-bottom: 24px;
-        }
-
-        .pulse {
-            width: 9px;
-            height: 9px;
-            background: var(--gold);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%,100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: .5;
-                transform: scale(1.3);
-            }
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            line-height: 1;
-            font-weight: 900;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 span {
-            color: var(--gold-light);
-        }
-
-        .hero-slogan {
-            max-width: 700px;
-
-            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
-            font-weight: 300;
-
-            opacity: .9;
-
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .hero-button {
-            text-decoration: none;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 14px 24px;
-            border-radius: 12px;
-
-            font-weight: 700;
-            font-size: .92rem;
-
-            transition: .3s ease;
-        }
-
-        .hero-button.primary {
-            background: var(--gold);
-            color: var(--charcoal);
-        }
-
-        .hero-button.primary:hover {
-            transform: translateY(-3px);
-            background: var(--gold-light);
-        }
-
-        .hero-button.secondary {
-            border: 1px solid rgba(255,255,255,.35);
-            color: white;
-            background: rgba(255,255,255,.08);
-        }
-
-        .hero-button.secondary:hover {
-            background: rgba(255,255,255,.16);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           MAIN
-        ========================= */
-
-        .main-content {
-            max-width: 1200px;
-            margin: -55px auto 0;
-            padding: 0 24px 80px;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* =========================
-           INTRO CARD
-        ========================= */
-
-        .intro-card {
-            background: var(--white);
-            border-radius: 22px;
-            padding: 35px;
-
-            box-shadow: 0 15px 45px var(--shadow-lg);
-
-            margin-bottom: 55px;
-        }
-
-        .intro-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .intro-card p {
-            color: var(--slate);
-            max-width: 800px;
-        }
-
-        /* =========================
-           SECTION HEADERS
-        ========================= */
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-header .small-title {
-            color: var(--terracotta);
-            font-size: .78rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.15;
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: var(--slate);
-            max-width: 650px;
-            margin: auto;
-        }
-
-        /* =========================
-           JOB GRID
-        ========================= */
-
-        .jobs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .job-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-
-            border: 1px solid rgba(0,0,0,.04);
-
-            box-shadow: 0 5px 25px var(--shadow);
-
-            transition: .4s cubic-bezier(.175,.885,.32,1.275);
-
-            display: flex;
-            flex-direction: column;
-        }
-
-        .job-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 45px var(--shadow-lg);
-        }
-
-        .job-top {
-            padding: 22px 24px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--forest),
-                    var(--deep-green)
-                );
-
-            color: white;
-        }
-
-        .job-category {
-            display: inline-block;
-
-            padding: 5px 11px;
-
-            background: rgba(255,255,255,.14);
-            border: 1px solid rgba(255,255,255,.2);
-
-            border-radius: 50px;
-
-            font-size: .7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: .6px;
-
-            margin-bottom: 12px;
-        }
-
-        .job-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            line-height: 1.25;
-            margin-bottom: 6px;
-        }
-
-        .business-name {
-            font-size: .85rem;
-            opacity: .8;
-        }
-
-        .job-body {
-            padding: 22px 24px;
-            flex: 1;
-        }
-
-        .job-info {
-            display: grid;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .job-info-row {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            font-size: .85rem;
-        }
-
-        .job-info-icon {
-            width: 25px;
-            flex-shrink: 0;
-        }
-
-        .job-info strong {
-            color: var(--charcoal);
-        }
-
-        .job-description {
-            color: var(--slate);
-            font-size: .9rem;
-            margin-bottom: 20px;
-        }
-
-        .job-subtitle {
-            font-size: .82rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin: 15px 0 8px;
-            text-transform: uppercase;
-            letter-spacing: .4px;
-        }
-
-        .requirements {
-            padding-left: 20px;
-            color: var(--slate);
-            font-size: .84rem;
-        }
-
-        .requirements li {
-            margin-bottom: 5px;
-        }
-
-        .job-footer {
-            padding: 18px 24px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .apply-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            width: 100%;
-
-            padding: 13px;
-
-            border-radius: 11px;
-
-            text-decoration: none;
-
-            background: linear-gradient(
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Prefino...Izandla Zagezana — Together We Fight Unemployment</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-STSY5P0WBX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-STSY5P0WBX');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --terracotta: #C75B39;
+        --terracotta-light: #E07A5F;
+        --gold: #D4A843;
+        --gold-light: #F2CC8F;
+        --deep-green: #2D6A4F;
+        --forest: #1B4332;
+        --warm-cream: #FDF6E3;
+        --sand: #F5E6D3;
+        --charcoal: #1A1A2E;
+        --slate: #4A4E69;
+        --light-slate: #9A8C98;
+        --white: #FFFFFF;
+        --border: #E8E8EC;
+        --shadow: rgba(26, 26, 46, 0.08);
+        --shadow-lg: rgba(26, 26, 46, 0.15);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--warm-cream);
+        color: var(--charcoal);
+        line-height: 1.6;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+
+        max-width: 1200px;
+        margin: auto;
+        padding: 24px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        color: var(--white);
+        text-decoration: none;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.45rem;
+        font-weight: 900;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 10px 14px;
+        border-radius: 10px;
+        transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255,255,255,0.12);
+    }
+
+    .nav-links .nav-btn {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
+
+    .nav-links .nav-btn:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+    }
+
+    .hero {
+        min-height: 600px;
+
+        background:
+            linear-gradient(
                 135deg,
-                var(--terracotta),
-                var(--gold)
+                rgba(27,67,50,0.98),
+                rgba(45,106,79,0.95) 50%,
+                rgba(199,91,57,0.95)
             );
 
-            color: white;
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+    }
 
-            font-weight: 700;
-            font-size: .86rem;
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
 
-            transition: .3s ease;
+        background-image:
+            url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.035'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+        opacity: 0.8;
+    }
+
+    .hero-content {
+        max-width: 1200px;
+        margin: auto;
+        padding: 150px 24px 100px;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+
+        padding: 9px 18px;
+        border-radius: 50px;
+
+        font-size: 0.82rem;
+        letter-spacing: 0.5px;
+
+        margin-bottom: 24px;
+    }
+
+    .pulse {
+        width: 9px;
+        height: 9px;
+        background: var(--gold);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%,100% {
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .apply-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(199,91,57,.25);
+        50% {
+            opacity: .5;
+            transform: scale(1.3);
         }
+    }
 
-        /* =========================
-           MINI CV
-        ========================= */
+    .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 1;
+        font-weight: 900;
+        margin-bottom: 22px;
+    }
 
-        .cv-section {
-            margin-top: 75px;
-        }
+    .hero h1 span {
+        color: var(--gold-light);
+    }
 
-        .cv-card {
-            background: var(--white);
-            border-radius: 22px;
+    .hero-slogan {
+        max-width: 700px;
 
-            padding: 35px;
+        font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+        font-weight: 300;
 
-            box-shadow: 0 8px 30px var(--shadow);
+        opacity: .9;
 
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
+        margin-bottom: 35px;
+    }
 
-        .cv-preview {
-            border: 1px solid var(--border);
-            padding: 30px;
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
 
-            background: #fff;
+    .hero-button {
+        text-decoration: none;
 
-            box-shadow: 0 5px 20px rgba(0,0,0,.04);
-        }
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
 
-        .cv-preview h3 {
-            text-align: center;
+        padding: 14px 24px;
+        border-radius: 12px;
 
-            font-family: "Times New Roman", Times, serif;
+        font-weight: 700;
+        font-size: .92rem;
 
-            font-size: 1.25rem;
+        transition: .3s ease;
+    }
 
-            text-decoration: underline;
+    .hero-button.primary {
+        background: var(--gold);
+        color: var(--charcoal);
+    }
 
-            margin-bottom: 25px;
-        }
+    .hero-button.primary:hover {
+        transform: translateY(-3px);
+        background: var(--gold-light);
+    }
 
-        .cv-preview h4 {
-            font-family: "Times New Roman", Times, serif;
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
+    .hero-button.secondary {
+        border: 1px solid rgba(255,255,255,.35);
+        color: white;
+        background: rgba(255,255,255,.08);
+    }
 
-        .cv-preview p,
-        .cv-preview li {
-            font-family: "Times New Roman", Times, serif;
-            font-size: .95rem;
-        }
+    .hero-button.secondary:hover {
+        background: rgba(255,255,255,.16);
+        transform: translateY(-2px);
+    }
 
-        .cv-preview ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
+    .main-content {
+        max-width: 1200px;
+        margin: -55px auto 0;
+        padding: 0 24px 80px;
+        position: relative;
+        z-index: 5;
+    }
 
-        .cv-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    .intro-card {
+        background: var(--white);
+        border-radius: 22px;
+        padding: 35px;
 
-        .cv-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
+        box-shadow: 0 15px 45px var(--shadow-lg);
 
-        .cv-info p {
-            color: var(--slate);
-            margin-bottom: 20px;
-        }
+        margin-bottom: 55px;
+    }
 
-        .create-cv-button {
-            display: inline-flex;
-            width: fit-content;
+    .intro-card h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
 
-            text-decoration: none;
+    .intro-card p {
+        color: var(--slate);
+        max-width: 800px;
+    }
 
-            background: var(--forest);
-            color: white;
+    .section-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-            padding: 14px 24px;
-            border-radius: 11px;
+    .section-header .small-title {
+        color: var(--terracotta);
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
 
-            font-weight: 700;
+    .section-header h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+        margin-bottom: 10px;
+    }
 
-            transition: .3s ease;
-        }
+    .section-header p {
+        color: var(--slate);
+        max-width: 650px;
+        margin: auto;
+    }
 
-        .create-cv-button:hover {
-            background: var(--deep-green);
-            transform: translateY(-2px);
-        }
+    /* JOB CHECKING */
 
-        /* =========================
-           DOCUMENT SECTION
-        ========================= */
+    .job-check-section {
+        margin-top: 20px;
+    }
 
-        .documents-section {
-            margin-top: 75px;
-        }
+    .job-check-card {
+        background:
+            linear-gradient(
+                135deg,
+                var(--forest),
+                var(--deep-green)
+            );
 
+        color: white;
+        border-radius: 22px;
+        padding: 45px;
+        text-align: center;
+
+        box-shadow: 0 12px 35px var(--shadow-lg);
+    }
+
+    .job-check-card h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+
+    .job-check-card p {
+        max-width: 700px;
+        margin: 0 auto 25px;
+        opacity: .85;
+    }
+
+    .job-check-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        text-decoration: none;
+
+        background: var(--gold);
+        color: var(--charcoal);
+
+        padding: 14px 25px;
+        border-radius: 11px;
+
+        font-weight: 700;
+
+        transition: .3s ease;
+    }
+
+    .job-check-button:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+    }
+
+    .cv-section {
+        margin-top: 75px;
+    }
+
+    .cv-card {
+        background: var(--white);
+        border-radius: 22px;
+
+        padding: 35px;
+
+        box-shadow: 0 8px 30px var(--shadow);
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    .cv-preview {
+        border: 1px solid var(--border);
+        padding: 30px;
+
+        background: #fff;
+
+        box-shadow: 0 5px 20px rgba(0,0,0,.04);
+    }
+
+    .cv-preview h3 {
+        text-align: center;
+
+        font-family: "Times New Roman", Times, serif;
+
+        font-size: 1.25rem;
+
+        text-decoration: underline;
+
+        margin-bottom: 25px;
+    }
+
+    .cv-preview h4 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+
+    .cv-preview p,
+    .cv-preview li {
+        font-family: "Times New Roman", Times, serif;
+        font-size: .95rem;
+    }
+
+    .cv-preview ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .cv-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cv-info h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .cv-info p {
+        color: var(--slate);
+        margin-bottom: 20px;
+    }
+
+    .create-cv-button {
+        display: inline-flex;
+        width: fit-content;
+
+        text-decoration: none;
+
+        background: var(--forest);
+        color: white;
+
+        padding: 14px 24px;
+        border-radius: 11px;
+
+        font-weight: 700;
+
+        transition: .3s ease;
+    }
+
+    .create-cv-button:hover {
+        background: var(--deep-green);
+        transform: translateY(-2px);
+    }
+
+    .documents-section {
+        margin-top: 75px;
+    }
+
+    .documents-card {
+        background: white;
+        border-radius: 22px;
+        padding: 35px;
+
+        box-shadow: 0 8px 30px var(--shadow);
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+
+        align-items: center;
+    }
+
+    .documents-info h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .documents-info p {
+        color: var(--slate);
+        margin-bottom: 20px;
+    }
+
+    .documents-button {
+        display: inline-flex;
+        text-decoration: none;
+
+        background: var(--terracotta);
+        color: white;
+
+        padding: 14px 24px;
+        border-radius: 11px;
+
+        font-weight: 700;
+
+        transition: .3s ease;
+    }
+
+    .documents-button:hover {
+        background: var(--deep-green);
+        transform: translateY(-2px);
+    }
+
+    .document-preview {
+        background: var(--sand);
+        border-radius: 18px;
+        padding: 35px;
+        text-align: center;
+        font-size: 4rem;
+    }
+
+    .document-preview p {
+        font-size: 1rem;
+        color: var(--slate);
+        margin-top: 10px;
+    }
+
+    .business-section {
+        margin-top: 75px;
+    }
+
+    .business-card {
+        background:
+            linear-gradient(
+                135deg,
+                var(--forest),
+                var(--deep-green)
+            );
+
+        color: white;
+
+        border-radius: 22px;
+
+        padding: 45px;
+
+        text-align: center;
+
+        box-shadow: 0 12px 35px var(--shadow-lg);
+    }
+
+    .business-card h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+
+    .business-card p {
+        max-width: 700px;
+        margin: 0 auto 25px;
+        opacity: .85;
+    }
+
+    .business-button {
+        display: inline-flex;
+        text-decoration: none;
+
+        background: var(--gold);
+        color: var(--charcoal);
+
+        padding: 14px 25px;
+        border-radius: 11px;
+
+        font-weight: 700;
+
+        transition: .3s ease;
+    }
+
+    .business-button:hover {
+        background: var(--gold-light);
+        transform: translateY(-2px);
+    }
+
+    .how-section {
+        margin-top: 75px;
+    }
+
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 20px;
+    }
+
+    .step {
+        background: white;
+        padding: 28px;
+
+        border-radius: 18px;
+
+        box-shadow: 0 5px 22px var(--shadow);
+
+        text-align: center;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+
+        margin: 0 auto 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: var(--sand);
+        color: var(--terracotta);
+
+        font-weight: 900;
+    }
+
+    .step h3 {
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 8px;
+    }
+
+    .step p {
+        color: var(--slate);
+        font-size: .88rem;
+    }
+
+    .footer {
+        background: var(--charcoal);
+        color: white;
+
+        padding: 60px 24px;
+
+        text-align: center;
+    }
+
+    .footer h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .footer p {
+        color: rgba(255,255,255,.65);
+        max-width: 600px;
+        margin: 0 auto 25px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: var(--gold);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 14px;
+    }
+
+    .footer-links a:hover {
+        color: var(--gold-light);
+    }
+
+    .copyright {
+        margin-top: 30px;
+        padding-top: 20px;
+
+        border-top: 1px solid rgba(255,255,255,.1);
+
+        font-size: .75rem;
+        color: rgba(255,255,255,.45);
+    }
+
+    @media (max-width: 900px) {
+
+        .cv-card,
         .documents-card {
-            background: white;
-            border-radius: 22px;
-            padding: 35px;
-
-            box-shadow: 0 8px 30px var(--shadow);
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-
-            align-items: center;
-        }
-
-        .documents-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .documents-info p {
-            color: var(--slate);
-            margin-bottom: 20px;
-        }
-
-        .documents-button {
-            display: inline-flex;
-            text-decoration: none;
-
-            background: var(--terracotta);
-            color: white;
-
-            padding: 14px 24px;
-            border-radius: 11px;
-
-            font-weight: 700;
-
-            transition: .3s ease;
-        }
-
-        .documents-button:hover {
-            background: var(--deep-green);
-            transform: translateY(-2px);
-        }
-
-        .document-preview {
-            background: var(--sand);
-            border-radius: 18px;
-            padding: 35px;
-            text-align: center;
-            font-size: 4rem;
-        }
-
-        .document-preview p {
-            font-size: 1rem;
-            color: var(--slate);
-            margin-top: 10px;
-        }
-
-        /* =========================
-           BUSINESS SECTION
-        ========================= */
-
-        .business-section {
-            margin-top: 75px;
-        }
-
-        .business-card {
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--forest),
-                    var(--deep-green)
-                );
-
-            color: white;
-
-            border-radius: 22px;
-
-            padding: 45px;
-
-            text-align: center;
-
-            box-shadow: 0 12px 35px var(--shadow-lg);
-        }
-
-        .business-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .business-card p {
-            max-width: 700px;
-            margin: 0 auto 25px;
-            opacity: .85;
-        }
-
-        .business-button {
-            display: inline-flex;
-            text-decoration: none;
-
-            background: var(--gold);
-            color: var(--charcoal);
-
-            padding: 14px 25px;
-            border-radius: 11px;
-
-            font-weight: 700;
-
-            transition: .3s ease;
-        }
-
-        .business-button:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-        }
-
-        /* =========================
-           HOW IT WORKS
-        ========================= */
-
-        .how-section {
-            margin-top: 75px;
+            grid-template-columns: 1fr;
         }
 
         .steps {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 20px;
+            grid-template-columns: 1fr;
         }
 
-        .step {
-            background: white;
-            padding: 28px;
+        .nav-links a {
+            padding: 8px 9px;
+        }
+    }
 
-            border-radius: 18px;
+    @media (max-width: 650px) {
 
-            box-shadow: 0 5px 22px var(--shadow);
-
-            text-align: center;
+        .navbar {
+            padding: 18px;
+            align-items: flex-start;
         }
 
-        .step-number {
-            width: 48px;
-            height: 48px;
-
-            margin: 0 auto 15px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 50%;
-
-            background: var(--sand);
-            color: var(--terracotta);
-
-            font-weight: 900;
+        .logo {
+            font-size: 1.1rem;
         }
 
-        .step h3 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 8px;
+        .nav-links {
+            gap: 2px;
+            justify-content: flex-end;
         }
 
-        .step p {
-            color: var(--slate);
-            font-size: .88rem;
+        .nav-links a {
+            padding: 7px 6px;
+            font-size: .68rem;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .footer {
-            background: var(--charcoal);
-            color: white;
-
-            padding: 60px 24px;
-
-            text-align: center;
+        .hero-content {
+            padding: 130px 20px 80px;
         }
 
-        .footer h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: 3rem;
         }
 
-        .footer p {
-            color: rgba(255,255,255,.65);
-            max-width: 600px;
-            margin: 0 auto 25px;
+        .main-content {
+            padding-left: 16px;
+            padding-right: 16px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+        .intro-card {
+            padding: 25px;
         }
 
-        .footer-links a {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 14px;
+        .cv-card,
+        .documents-card {
+            padding: 20px;
         }
 
-        .footer-links a:hover {
-            color: var(--gold-light);
+        .business-card,
+        .job-check-card {
+            padding: 30px 20px;
         }
 
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-
-            border-top: 1px solid rgba(255,255,255,.1);
-
-            font-size: .75rem;
-            color: rgba(255,255,255,.45);
+        .business-card h2,
+        .job-check-card h2 {
+            font-size: 2rem;
         }
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .jobs-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .cv-card,
-            .documents-card {
-                grid-template-columns: 1fr;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links a {
-                padding: 8px 9px;
-            }
+        .document-preview {
+            padding: 25px;
         }
+    }
+</style>
 
-        @media (max-width: 650px) {
+<!-- Existing advertising script -->
+<script src="https://quge5.com/88/tag.min.js" data-zone="273404" async data-cfasync="false"></script>
 
-            .navbar {
-                padding: 18px;
-                align-items: flex-start;
-            }
+</head><body><nav class="navbar"><a href="index.html" class="logo">
+    Izandla Zagezana
+</a>
 
-            .logo {
-                font-size: 1.1rem;
-            }
+<div class="nav-links">
 
-            .nav-links {
-                gap: 2px;
-                justify-content: flex-end;
-            }
-
-            .nav-links a {
-                padding: 7px 6px;
-                font-size: .68rem;
-            }
-
-            .hero-content {
-                padding: 130px 20px 80px;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .main-content {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-
-            .intro-card {
-                padding: 25px;
-            }
-
-            .jobs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cv-card,
-            .documents-card {
-                padding: 20px;
-            }
-
-            .business-card {
-                padding: 30px 20px;
-            }
-
-            .business-card h2 {
-                font-size: 2rem;
-            }
-
-            .document-preview {
-                padding: 25px;
-            }
-        }
-    </style>
-
-    <!-- Existing advertising script -->
-    <script src="https://quge5.com/88/tag.min.js" data-zone="273404" async data-cfasync="false"></script>
-
-</head>
-
-<body>
-
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<nav class="navbar">
-
-    <a href="index.html" class="logo">
-        Izandla Zagezana
+    <a href="index.html">
+        Home
     </a>
 
-    <div class="nav-links">
+    <a href="about.html">
+        About Us
+    </a>
 
-        <a href="index.html">
-            Home
+    <a href="business.html">
+        Start My Business
+    </a>
+
+    <a href="cv.html" class="nav-btn">
+        Create CV
+    </a>
+
+    <a href="documents.html">
+        Scan Documents
+    </a>
+
+</div>
+
+</nav><header class="hero"><div class="hero-content">
+
+    <div class="hero-badge">
+        <span class="pulse"></span>
+        Community-Powered Opportunities
+    </div>
+
+    <h1>
+        Izandla <span>Zagezana</span>
+    </h1>
+
+    <p class="hero-slogan">
+        Together we fight unemployment. Connecting South Africans
+        with opportunities, information and tools to build a better future.
+    </p>
+
+    <div class="hero-buttons">
+
+        <!-- NOW GOES TO jobs.html -->
+        <a href="jobs.html" class="hero-button primary">
+            Check Jobs
         </a>
 
-        <a href="about.html">
-            About Us
+        <a href="cv.html" class="hero-button secondary">
+            Create My CV
         </a>
 
-        <a href="business.html">
-            Start My Business
-        </a>
-
-        <a href="cv.html" class="nav-btn">
-            Create CV
-        </a>
-
-        <a href="documents.html">
+        <a href="documents.html" class="hero-button secondary">
             Scan Documents
         </a>
 
     </div>
 
-</nav>
+</div>
+
+</header><main class="main-content"><section class="intro-card">
+
+    <h2>
+        Opportunities should be easier to find.
+    </h2>
+
+    <p>
+        Izandla Zagezana was created to make it easier for people
+        to discover employment opportunities and prepare themselves
+        for the world of work. Check the latest opportunities,
+        create a professional CV and prepare the documents you
+        may need when applying.
+    </p>
+
+</section>
 
 
 <!-- =========================
-     HERO
+     JOB CHECKING
 ========================= -->
 
-<header class="hero">
+<section class="job-check-section">
 
-    <div class="hero-content">
+    <div class="section-header">
 
-        <div class="hero-badge">
-            <span class="pulse"></span>
-            Community-Powered Opportunities
+        <div class="small-title">
+            Employment Opportunities
         </div>
-
-        <h1>
-            Izandla <span>Zagezana</span>
-        </h1>
-
-        <p class="hero-slogan">
-            Together we fight unemployment. Connecting South Africans
-            with opportunities, information and tools to build a better future.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#opportunities" class="hero-button primary">
-                View Opportunities
-            </a>
-
-            <a href="cv.html" class="hero-button secondary">
-                Create My CV
-            </a>
-
-            <a href="documents.html" class="hero-button secondary">
-                Scan Documents
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =========================
-     MAIN CONTENT
-========================= -->
-
-<main class="main-content">
-
-
-    <!-- INTRO -->
-
-    <section class="intro-card">
 
         <h2>
-            Opportunities should be easier to find.
+            Looking For a Job?
         </h2>
 
         <p>
-            Izandla Zagezana was created to make it easier for people
-            to discover employment opportunities and prepare themselves
-            for the world of work. Browse the opportunities below and
-            create a professional CV that you can use when applying.
+            We keep the job listings separate so you can check
+            available opportunities without having to search
+            through the homepage.
         </p>
 
-    </section>
+    </div>
 
 
-    <!-- =========================
-         JOB OPPORTUNITIES
-    ========================= -->
+    <div class="job-check-card">
 
-    <section id="opportunities">
+        <h2>
+            Check Available Jobs
+        </h2>
 
-        <div class="section-header">
+        <p>
+            Visit our dedicated jobs page to browse available
+            employment opportunities and find a position that
+            matches your skills and experience.
+        </p>
 
-            <div class="small-title">
-                Latest Opportunities
-            </div>
+        <a
+            href="jobs.html"
+            class="job-check-button"
+        >
+            Check Jobs →
+        </a>
 
-            <h2>
-                Find Your Next Opportunity
-            </h2>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MINI CV
+========================= -->
+
+<section class="cv-section">
+
+    <div class="section-header">
+
+        <div class="small-title">
+            Prepare Yourself
+        </div>
+
+        <h2>
+            Your CV Opens the Door
+        </h2>
+
+        <p>
+            A good opportunity needs a good application.
+            Create a professional CV with our CV builder.
+        </p>
+
+    </div>
+
+
+    <div class="cv-card">
+
+        <div class="cv-preview">
+
+            <h3>
+                CURRICULUM VITAE
+            </h3>
+
+            <h4>
+                Jaff Mabaso
+            </h4>
 
             <p>
-                Explore opportunities shared with our community.
-                Always check the original job posting for the latest
-                requirements, location and application information.
+                Language: English
+            </p>
+
+            <br>
+
+            <h4>
+                Personal Profile
+            </h4>
+
+            <p>
+                Motivated South African job seeker seeking an opportunity
+                to develop professional skills, contribute to an organisation
+                and grow through practical experience.
+            </p>
+
+            <br>
+
+            <h4>
+                Skills
+            </h4>
+
+            <ul>
+                <li>Communication</li>
+                <li>Teamwork</li>
+                <li>Problem solving</li>
+                <li>Computer literacy</li>
+            </ul>
+
+            <h4>
+                Languages
+            </h4>
+
+            <p>
+                English
             </p>
 
         </div>
 
 
-        <div class="jobs-grid">
-
-
-            <!-- JOB 1 — BARISTA -->
-
-            <article class="job-card">
-
-                <div class="job-top">
-
-                    <span class="job-category">
-                        Hospitality
-                    </span>
-
-                    <h3 class="job-title">
-                        Barista
-                    </h3>
-
-                    <div class="business-name">
-                        Jonsson Workwear
-                    </div>
-
-                </div>
-
-
-                <div class="job-body">
-
-                    <div class="job-info">
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">📍</span>
-                            <span>
-                                <strong>Location:</strong>
-                                Alberton, Gauteng, South Africa
-                            </span>
-                        </div>
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">☕</span>
-                            <span>
-                                <strong>Position:</strong>
-                                Barista / In-store Hospitality
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <p class="job-description">
-                        Jonsson Workwear is looking for a skilled, charismatic
-                        and enthusiastic barista to contribute to its in-store
-                        experience at the Alberton store. The role involves
-                        creating and serving a selection of coffees while
-                        providing warm and brilliant customer service.
-                    </p>
-
-                    <p class="job-description">
-                        When required, the successful candidate will also assist
-                        with a range of responsibilities outside the coffee
-                        station as part of the wider store team.
-                    </p>
-
-
-                    <div class="job-subtitle">
-                        Key Qualities
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Skilled and enthusiastic</li>
-                        <li>Excellent customer service</li>
-                        <li>Warm and charismatic personality</li>
-                        <li>Ability to work as part of a team</li>
-                        <li>Flexible and willing to assist with different responsibilities</li>
-                    </ul>
-
-
-                    <div class="job-subtitle">
-                        About the Role
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Prepare and serve coffee</li>
-                        <li>Provide excellent in-store hospitality</li>
-                        <li>Interact professionally with customers</li>
-                        <li>Support the store team when required</li>
-                    </ul>
-
-                </div>
-
-
-                <div class="job-footer">
-
-                    <a
-                        href="https://www.linkedin.com/safety/go/?url=https%3A%2F%2Fgrnh%2Ese%2Fhq1jimv2teu&urlhash=xilt&mt=tLqLNHw9b9CkKMcRjE9v_ZJxJkeOA7owWvNmlvsL83SlgHvbpi8HPZehxhzgenJSMYales5zuKllMgJOt6jFund6eEecO&isSdui=true"
-                        class="apply-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View & Apply →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- JOB 2 — RUNNER -->
-
-            <article class="job-card">
-
-                <div class="job-top">
-
-                    <span class="job-category">
-                        Restaurant
-                    </span>
-
-                    <h3 class="job-title">
-                        Runner
-                    </h3>
-
-                    <div class="business-name">
-                        tashas
-                    </div>
-
-                </div>
-
-
-                <div class="job-body">
-
-                    <div class="job-info">
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">📍</span>
-                            <span>
-                                <strong>Location:</strong>
-                                tashas Rosebank, Gauteng, South Africa
-                            </span>
-                        </div>
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">🍽️</span>
-                            <span>
-                                <strong>Position:</strong>
-                                Restaurant Runner
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <p class="job-description">
-                        At tashas, exceptional hospitality is built on teamwork.
-                        The Runner is an essential link between the kitchen and
-                        guests, helping ensure that every dish and beverage is
-                        delivered quickly, accurately and beautifully presented.
-                    </p>
-
-                    <p class="job-description">
-                        This role supports the front-of-house team and helps
-                        create a seamless dining experience for guests.
-                    </p>
-
-
-                    <div class="job-subtitle">
-                        Key Qualities
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Energetic and reliable</li>
-                        <li>Service-oriented</li>
-                        <li>Strong teamwork skills</li>
-                        <li>Able to work in a fast-paced environment</li>
-                        <li>Pride in delivering excellent service</li>
-                    </ul>
-
-
-                    <div class="job-subtitle">
-                        About the Role
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Deliver dishes and beverages to guests</li>
-                        <li>Ensure orders are delivered accurately</li>
-                        <li>Support the kitchen and front-of-house teams</li>
-                        <li>Help maintain a smooth dining experience</li>
-                    </ul>
-
-                </div>
-
-
-                <div class="job-footer">
-
-                    <a
-                        href="https://www.linkedin.com/safety/go/?url=https%3A%2F%2Fcareers%2Etashasgroup%2Ecom%2Fjobs%2F7987007-runner&urlhash=Mj2d&mt=_JLKiefOHLWl7Oj984rMzrWULwm2ofYpibF74OPnLnylzjDeXOswMNzj3ff5mXRBYS9H1evZoktQYjRKPza4O3bZQNUv&isSdui=true"
-                        class="apply-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View & Apply →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- JOB 3 — DELIVERY DRIVER -->
-
-            <article class="job-card">
-
-                <div class="job-top">
-
-                    <span class="job-category">
-                        Full-Time / Part-Time
-                    </span>
-
-                    <h3 class="job-title">
-                        Delivery Driver
-                    </h3>
-
-                    <div class="business-name">
-                        Papa John's
-                    </div>
-
-                </div>
-
-
-                <div class="job-body">
-
-                    <div class="job-info">
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">📍</span>
-                            <span>
-                                <strong>Location:</strong>
-                                Store 1406_NC / Garner / Vandora Springs Rd,
-                                North Carolina, USA
-                            </span>
-                        </div>
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">🕐</span>
-                            <span>
-                                <strong>Type:</strong>
-                                Full Time or Part Time
-                            </span>
-                        </div>
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">🆔</span>
-                            <span>
-                                <strong>Requisition:</strong>
-                                R26_0000001952
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <p class="job-description">
-                        Papa John's is hiring Delivery Drivers. Drivers can
-                        work full time or part time and are paid an hourly
-                        rate plus mileage and tips. The position also offers
-                        flexible hours, training and employee discounts.
-                    </p>
-
-
-                    <div class="job-subtitle">
-                        Benefits
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Medical and dental benefits</li>
-                        <li>Paid vacation</li>
-                        <li>401(k)</li>
-                        <li>Paid weekly</li>
-                        <li>Flexible hours</li>
-                        <li>50% discounts</li>
-                        <li>Direct deposit and debit/pay cards</li>
-                        <li>Ongoing training programmes</li>
-                    </ul>
-
-
-                    <div class="job-subtitle">
-                        Education Benefit
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Dough & Degrees programme</li>
-                        <li>100% paid online tuition for eligible programmes</li>
-                        <li>Online university opportunities including Purdue University Global</li>
-                    </ul>
-
-
-                    <div class="job-subtitle">
-                        Critical Requirements
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Must be at least 18 years old</li>
-                        <li>Must have a car</li>
-                        <li>Must have valid car insurance</li>
-                        <li>Must have an acceptable driving record</li>
-                    </ul>
-
-
-                    <p class="job-description">
-                        <strong>Important:</strong> This opportunity is located
-                        in North Carolina, United States, and applicants must
-                        meet the employer's eligibility and employment
-                        requirements.
-                    </p>
-
-                </div>
-
-
-                <div class="job-footer">
-
-                    <a
-                        href="https://www.linkedin.com/safety/go/?url=https%3A%2F%2Fpapajohns%2Ewd1%2Emyworkdayjobs%2Ecom%2FPapaJohnsCareers%2Fjob%2FStore-1406_NCGarnerVandora-Springs-Rd%2FDelivery-Driver_R26_0000001952%3Fsource%3DLinkedIn&urlhash=qECd&mt=LKC4KWvV7zPWNAkoYFPX6pYTUl-CxuG6moa024heLcNwznnr5EnLwMGoB2LHE1NU01Rsc7tCMlHrwY46BLgxy8G7VTuW&isSdui=true"
-                        class="apply-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View & Apply →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!-- JOB 4 — DISHWASHER -->
-
-            <article class="job-card">
-
-                <div class="job-top">
-
-                    <span class="job-category">
-                        Hospitality
-                    </span>
-
-                    <h3 class="job-title">
-                        Dishwasher
-                    </h3>
-
-                    <div class="business-name">
-                        tashas
-                    </div>
-
-                </div>
-
-
-                <div class="job-body">
-
-                    <div class="job-info">
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">📍</span>
-                            <span>
-                                <strong>Location:</strong>
-                                tashas Rosebank, Gauteng, South Africa
-                            </span>
-                        </div>
-
-                        <div class="job-info-row">
-                            <span class="job-info-icon">🍽️</span>
-                            <span>
-                                <strong>Position:</strong>
-                                Kitchen Dishwasher
-                            </span>
-                        </div>
-
-                    </div>
-
-
-                    <p class="job-description">
-                        tashas is looking for a hardworking, reliable and
-                        team-oriented Dishwasher to join its kitchen team
-                        at tashas Rosebank.
-                    </p>
-
-                    <p class="job-description">
-                        The Dishwasher plays an essential role in keeping
-                        equipment, crockery, utensils and work areas clean,
-                        organised and ready for service.
-                    </p>
-
-
-                    <div class="job-subtitle">
-                        Key Qualities
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Hardworking</li>
-                        <li>Reliable</li>
-                        <li>Team-oriented</li>
-                        <li>Organised</li>
-                        <li>Takes pride in their work</li>
-                        <li>Understands the importance of every team member</li>
-                    </ul>
-
-
-                    <div class="job-subtitle">
-                        About the Role
-                    </div>
-
-                    <ul class="requirements">
-                        <li>Clean equipment and kitchen items</li>
-                        <li>Wash crockery and utensils</li>
-                        <li>Keep work areas organised</li>
-                        <li>Ensure kitchen equipment is ready for service</li>
-                        <li>Support chefs and front-of-house teams</li>
-                    </ul>
-
-                </div>
-
-
-                <div class="job-footer">
-
-                    <a
-                        href="https://www.linkedin.com/safety/go/?url=https%3A%2F%2Fcareers%2Etashasgroup%2Ecom%2Fjobs%2F7986888-dishwasher&urlhash=U--N&mt=fO-gdwY9kXHCqQmYfzXZTVgQG3Rsojt13Te44NHL6mzazoLYLqsJxwUs_nyIexiN8j9MbqzSOJs0kznZ3LH2EYJ8KDsf&isSdui=true"
-                        class="apply-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        View & Apply →
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         MINI CV
-    ========================= -->
-
-    <section class="cv-section">
-
-        <div class="section-header">
-
-            <div class="small-title">
-                Prepare Yourself
-            </div>
-
-            <h2>
-                Your CV Opens the Door
-            </h2>
+        <div class="cv-info">
+
+            <h3>
+                Need a CV?
+            </h3>
 
             <p>
-                A good opportunity needs a good application.
-                Create a professional CV with our CV builder.
+                You don't have to struggle with complicated CV templates.
+                Our CV builder helps you choose the information you want
+                to include and generates professional CV versions for you.
             </p>
 
-        </div>
-
-
-        <div class="cv-card">
-
-            <div class="cv-preview">
-
-                <h3>
-                    CURRICULUM VITAE
-                </h3>
-
-                <h4>
-                    Jaff Mabaso
-                </h4>
-
-                <p>
-                    Language: English
-                </p>
-
-                <br>
-
-                <h4>
-                    Personal Profile
-                </h4>
-
-                <p>
-                    Motivated South African job seeker seeking an opportunity
-                    to develop professional skills, contribute to an organisation
-                    and grow through practical experience.
-                </p>
-
-                <br>
-
-                <h4>
-                    Skills
-                </h4>
-
-                <ul>
-                    <li>Communication</li>
-                    <li>Teamwork</li>
-                    <li>Problem solving</li>
-                    <li>Computer literacy</li>
-                </ul>
-
-                <h4>
-                    Languages
-                </h4>
-
-                <p>
-                    English
-                </p>
-
-            </div>
-
-
-            <div class="cv-info">
-
-                <h3>
-                    Need a CV?
-                </h3>
-
-                <p>
-                    You don't have to struggle with complicated CV templates.
-                    Our CV builder helps you choose the information you want
-                    to include and generates professional CV versions for you.
-                </p>
-
-                <p>
-                    Add your personal information, education, experience,
-                    skills, languages and other details before downloading
-                    your CV.
-                </p>
-
-                <a
-                    href="cv.html"
-                    class="create-cv-button"
-                >
-                    Create My CV →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         DOCUMENTS
-    ========================= -->
-
-    <section class="documents-section">
-
-        <div class="section-header">
-
-            <div class="small-title">
-                Keep Your Documents Ready
-            </div>
-
-            <h2>
-                Scan Your Documents
-            </h2>
-
             <p>
-                Prepare important documents that you may need when applying
-                for jobs, opportunities or other services.
-            </p>
-
-        </div>
-
-
-        <div class="documents-card">
-
-            <div class="documents-info">
-
-                <h3>
-                    Scan & Prepare
-                </h3>
-
-                <p>
-                    Use the document scanner to capture important documents
-                    such as certificates, identification documents and other
-                    paperwork.
-                </p>
-
-                <a
-                    href="documents.html"
-                    class="documents-button"
-                >
-                    Scan Documents →
-                </a>
-
-            </div>
-
-
-            <div class="document-preview">
-
-                📄
-
-                <p>
-                    Your documents, ready when you need them.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         BUSINESS
-    ========================= -->
-
-    <section class="business-section">
-
-        <div class="business-card">
-
-            <h2>
-                Want to Start Your Own Business?
-            </h2>
-
-            <p>
-                Learn how to turn an idea into a business. Get guidance
-                on planning, starting and developing your business.
+                Add your personal information, education, experience,
+                skills, languages and other details before downloading
+                your CV.
             </p>
 
             <a
-                href="business.html"
-                class="business-button"
+                href="cv.html"
+                class="create-cv-button"
             >
-                Start My Business →
+                Create My CV →
             </a>
 
         </div>
 
-    </section>
+    </div>
 
-
-    <!-- =========================
-         HOW IT WORKS
-    ========================= -->
-
-    <section class="how-section">
-
-        <div class="section-header">
-
-            <div class="small-title">
-                Simple Process
-            </div>
-
-            <h2>
-                Start With Three Steps
-            </h2>
-
-        </div>
-
-
-        <div class="steps">
-
-            <div class="step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <h3>
-                    Find an Opportunity
-                </h3>
-
-                <p>
-                    Browse the available job advertisements
-                    and check which opportunity matches your skills.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <h3>
-                    Create Your CV
-                </h3>
-
-                <p>
-                    Enter your information into our CV builder
-                    and prepare a professional CV.
-                </p>
-
-            </div>
-
-
-            <div class="step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <h3>
-                    Apply
-                </h3>
-
-                <p>
-                    Follow the application instructions provided
-                    by the business before the closing date.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-</main>
+</section>
 
 
 <!-- =========================
-     FOOTER
+     DOCUMENTS
 ========================= -->
 
-<footer class="footer">
+<section class="documents-section">
 
-    <h3>
-        Izandla Zagezana
-    </h3>
+    <div class="section-header">
 
-    <p>
-        When hands wash each other, both become clean.
-        Together, we can help South Africans find opportunities,
-        build businesses and create a better future.
-    </p>
+        <div class="small-title">
+            Keep Your Documents Ready
+        </div>
 
+        <h2>
+            Scan Your Documents
+        </h2>
 
-    <div class="footer-links">
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="about.html">
-            About Us
-        </a>
-
-        <a href="business.html">
-            Start My Business
-        </a>
-
-        <a href="cv.html">
-            Create CV
-        </a>
-
-        <a href="documents.html">
-            Scan Documents
-        </a>
+        <p>
+            Prepare important documents that you may need when applying
+            for jobs, opportunities or other services.
+        </p>
 
     </div>
 
 
-    <div class="copyright">
-        © 2026 Izandla Zagezana. Built to help our community.
+    <div class="documents-card">
+
+        <div class="documents-info">
+
+            <h3>
+                Scan & Prepare
+            </h3>
+
+            <p>
+                Use the document scanner to capture important documents
+                such as certificates, identification documents and other
+                paperwork.
+            </p>
+
+            <a
+                href="documents.html"
+                class="documents-button"
+            >
+                Scan Documents →
+            </a>
+
+        </div>
+
+
+        <div class="document-preview">
+
+            📄
+
+            <p>
+                Your documents, ready when you need them.
+            </p>
+
+        </div>
+
     </div>
 
-</footer>
+</section>
 
 
-</body>
+<!-- =========================
+     BUSINESS
+========================= -->
+
+<section class="business-section">
+
+    <div class="business-card">
+
+        <h2>
+            Want to Start Your Own Business?
+        </h2>
+
+        <p>
+            Learn how to turn an idea into a business. Get guidance
+            on planning, starting and developing your business.
+        </p>
+
+        <a
+            href="business.html"
+            class="business-button"
+        >
+            Start My Business →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HOW IT WORKS
+========================= -->
+
+<section class="how-section">
+
+    <div class="section-header">
+
+        <div class="small-title">
+            Simple Process
+        </div>
+
+        <h2>
+            Start With Three Steps
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Check Jobs
+            </h3>
+
+            <p>
+                Visit the jobs page and check the available
+                employment opportunities that match your skills.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Create Your CV
+            </h3>
+
+            <p>
+                Enter your information into our CV builder
+                and prepare a professional CV.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Apply
+            </h3>
+
+            <p>
+                Follow the application instructions provided
+                by the business before the closing date.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main><footer class="footer"><h3>
+    Izandla Zagezana
+</h3>
+
+<p>
+    When hands wash each other, both become clean.
+    Together, we can help South Africans find opportunities,
+    build businesses and create a better future.
+</p>
+
+
+<div class="footer-links">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About Us
+    </a>
+
+    <a href="business.html">
+        Start My Business
+    </a>
+
+    <a href="cv.html">
+        Create CV
+    </a>
+
+    <a href="documents.html">
+        Scan Documents
+    </a>
+
+</div>
+
+
+<div class="copyright">
+    © 2026 Izandla Zagezana. Built to help our community.
+</div>
+
+</footer></body>
     </html>
